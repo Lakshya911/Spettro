@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqkdd2cjrsd62"]
+
+[ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_7y3i7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp17w"]
+atlas = ExtResource("1_7y3i7")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5eue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp17w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x5eue")

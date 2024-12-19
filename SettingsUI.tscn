@@ -1,0 +1,255 @@
+[gd_scene load_steps=4 format=3 uid="uid://nbd1muqwflxc"]
+
+[ext_resource type="Script" path="res://settings_ui.gd" id="1_0dwgl"]
+[ext_resource type="Script" path="res://h_slider.gd" id="2_vggps"]
+[ext_resource type="Texture2D" uid="uid://w084ff6e8gyw" path="res://Screenshot 2024-12-12 211918.png" id="3_xrp8a"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_0dwgl")
+
+[node name="Main" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.619608)
+offset_left = -51.0
+offset_top = -29.0
+offset_right = 1101.0
+offset_bottom = 619.0
+scale = Vector2(0.925, 0.925)
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 337.514
+offset_right = 763.0
+offset_bottom = 414.514
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="Button2" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 440.351
+offset_right = 763.0
+offset_bottom = 517.351
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="Button3" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 542.108
+offset_right = 763.0
+offset_bottom = 619.108
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="Label" type="Label" parent="Main"]
+z_index = 1
+layout_mode = 0
+offset_left = 270.27
+offset_top = 1.08107
+offset_right = 1422.27
+offset_bottom = 649.081
+theme_override_font_sizes/font_size = 160
+text = "Paused"
+
+[node name="Button4" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 236.027
+offset_right = 763.0
+offset_bottom = 313.027
+theme_override_font_sizes/font_size = 40
+text = "Map
+"
+
+[node name="Settings" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.619608)
+offset_left = -51.0
+offset_top = -29.0
+offset_right = 1101.0
+offset_bottom = 619.0
+scale = Vector2(0.925, 0.925)
+color = Color(0, 0, 0, 1)
+
+[node name="HSlider" type="HSlider" parent="Settings"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 215.135
+offset_top = 52.973
+offset_right = 952.135
+offset_bottom = 232.973
+min_value = -30.0
+max_value = 1.0
+rounded = true
+script = ExtResource("2_vggps")
+
+[node name="Label2" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 283.0
+offset_top = -25.0
+offset_right = 1435.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 100
+text = "Volume"
+
+[node name="Label3" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 102.0
+offset_right = 1182.0
+offset_bottom = 750.0
+theme_override_font_sizes/font_size = 70
+text = "Move Up"
+
+[node name="Label4" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = 1182.0
+offset_bottom = 828.0
+theme_override_font_sizes/font_size = 70
+text = "Move Down"
+
+[node name="Label5" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 258.0
+offset_right = 1182.0
+offset_bottom = 906.0
+theme_override_font_sizes/font_size = 70
+text = "Move Right"
+
+[node name="Label6" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 343.0
+offset_right = 1182.0
+offset_bottom = 991.0
+theme_override_font_sizes/font_size = 70
+text = "Move Left"
+
+[node name="Label7" type="Label" parent="Settings/HSlider"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 416.0
+offset_right = 1182.0
+offset_bottom = 1064.0
+theme_override_font_sizes/font_size = 70
+text = "Equip"
+
+[node name="Label6" type="Label" parent="Settings"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 857.0
+offset_top = 98.0
+offset_right = 2009.0
+offset_bottom = 746.0
+theme_override_font_sizes/font_size = 70
+text = "W"
+
+[node name="Label5" type="Label" parent="Settings"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 873.0
+offset_top = 417.0
+offset_right = 2025.0
+offset_bottom = 1065.0
+theme_override_font_sizes/font_size = 70
+text = "E"
+
+[node name="Label7" type="Label" parent="Settings"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 867.0
+offset_top = 334.0
+offset_right = 2019.0
+offset_bottom = 982.0
+theme_override_font_sizes/font_size = 70
+text = "A"
+
+[node name="Label8" type="Label" parent="Settings"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 866.0
+offset_top = 258.0
+offset_right = 2018.0
+offset_bottom = 906.0
+theme_override_font_sizes/font_size = 70
+text = "S"
+
+[node name="Label9" type="Label" parent="Settings"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 864.0
+offset_top = 177.0
+offset_right = 2016.0
+offset_bottom = 825.0
+theme_override_font_sizes/font_size = 70
+text = "D"
+
+[node name="Label" type="Label" parent="Settings"]
+self_modulate = Color(1, 0, 0, 1)
+top_level = true
+z_index = 4096
+layout_mode = 0
+offset_left = 38.0
+offset_top = 76.0
+offset_right = 1035.0
+offset_bottom = 187.0
+rotation = 0.392699
+theme_override_font_sizes/font_size = 70
+text = "Currently Under Development"
+
+[node name="Map" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.619608)
+offset_left = -51.0
+offset_top = -29.0
+offset_right = 1101.0
+offset_bottom = 619.0
+scale = Vector2(0.925, 0.925)
+color = Color(0, 0, 0, 1)
+
+[node name="Screenshot2024-12-12211918" type="Sprite2D" parent="Map"]
+position = Vector2(677.838, 324.324)
+scale = Vector2(0.631, 0.631)
+texture = ExtResource("3_xrp8a")
+
+[node name="Label7" type="Label" parent="Map"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 1184.0
+offset_bottom = 664.0
+theme_override_font_sizes/font_size = 70
+text = "Map:-"
+
+[connection signal="pressed" from="Main/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Main/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Main/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Main/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="value_changed" from="Settings/HSlider" to="Settings/HSlider" method="_on_value_changed"]
+[connection signal="mouse_entered" from="Settings/Label6" to="." method="_on_label_6_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Label5" to="." method="_on_label_5_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Label7" to="." method="_on_label_7_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Label8" to="." method="_on_label_8_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Label9" to="." method="_on_label_9_mouse_entered"]

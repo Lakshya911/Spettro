@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://8uxe8y04wxb6"]
+
+[ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="1_otqlv"]
+
+[node name="PointLight2D22" type="PointLight2D"]
+position = Vector2(-391, -194)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D14" type="PointLight2D" parent="."]
+position = Vector2(452, 417)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D13" type="PointLight2D" parent="."]
+position = Vector2(62, 196)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D12" type="PointLight2D" parent="."]
+position = Vector2(224, 422)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D11" type="PointLight2D" parent="."]
+position = Vector2(326, -98)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D10" type="PointLight2D" parent="."]
+position = Vector2(470, -331)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D9" type="PointLight2D" parent="."]
+position = Vector2(473, 13)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D15" type="PointLight2D" parent="."]
+position = Vector2(140, -80)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+position = Vector2(-175, 73)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D7" type="PointLight2D" parent="."]
+position = Vector2(-100, 419)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(-337, 417)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(-421, 143)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(-157, -372)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(92, -358)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(129, -253)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D16" type="PointLight2D" parent="."]
+position = Vector2(405, 267)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D23" type="PointLight2D" parent="."]
+position = Vector2(405, 267)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D17" type="PointLight2D" parent="."]
+position = Vector2(-128, -209)
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D18" type="PointLight2D" parent="."]
+position = Vector2(-115, 205)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D19" type="PointLight2D" parent="."]
+position = Vector2(-98, -56)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D24" type="PointLight2D" parent="."]
+position = Vector2(-406, 191)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D25" type="PointLight2D" parent="."]
+position = Vector2(-406, 191)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D20" type="PointLight2D" parent="."]
+position = Vector2(395, -302)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D21" type="PointLight2D" parent="."]
+position = Vector2(216, 141)
+rotation = -1.98149
+energy = 0.01
+texture = ExtResource("1_otqlv")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-391, -194)
+energy = 0.01
+texture = ExtResource("1_otqlv")
