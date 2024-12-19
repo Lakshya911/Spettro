@@ -3,6 +3,12 @@ extends CharacterBody2D
 var node1 : bool = true
 var node2 : bool = true
 var node3 : bool = true
+
+var node4 : bool = true
+var node5 : bool = true
+var node6 : bool = true
+var node7 : bool = true
+var node8 : bool = true
 var km : float;
 var x1;
 var x2;
@@ -63,6 +69,7 @@ func _ready():
 	preload("res://Ded.tscn")
 	#Distance b/w player and keys
 	$"../CanvasLayer".visible = false
+	$"../CanvasLayer3".visible = false
 func _process(delta):
 	d4 = Vector2(-116,-34)
 	if velocity.x > 0:
@@ -88,6 +95,11 @@ func _physics_process(delta):
 	move_and_slide()                   #Movement
 	if $"../Ghost".visible == true or Input.is_key_label_pressed(KEY_P):    #Distance b/w ghost and player is less then change scene
 		if x5 < 4 or Input.is_key_label_pressed(KEY_P):
+			$"../CanvasLayer2/Label2".visible = false
+			$"../CanvasLayer2/Label".visible = false
+			$"../CanvasLayer2/Label3".visible = false
+			$"../CanvasLayer2/Label4".visible = false
+			Speed = 0
 			$"../Sound/Jumpscare".play()
 			await get_tree().create_timer(2).timeout
 			$"../Sound/Jumpscare".stop()
@@ -98,7 +110,7 @@ func _physics_process(delta):
 				$".".hide()
 				$"../ParallaxBackground".hide()
 				await get_tree().create_timer(2).timeout
-				$"../AnimatedSprite2D4".global_position = global_position
+				$"../CanvasLayer3".visible = true
 				$"../Sound/After Jumpscare".play()
 				if $"../Sound/After Jumpscare".finished:
 					await get_tree().create_timer(1.5).timeout
@@ -135,29 +147,34 @@ func _physics_process(delta):
 			$"../Node2D3/AnimatedSprite2D4".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
+			node4 = false
 		if n2 < 6:
 			$"../Node2D3/AnimatedSprite2D5".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
+			node5 = false
 		if n3 < 6:
 			$"../Node2D3/AnimatedSprite2D6".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
+			node6 = false
 		if n4 < 6:
 			$"../Node2D3/AnimatedSprite2D7".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
+			node7 = false
 		if n5 < 6:
 			$"../Node2D3/AnimatedSprite2D8".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
+			node8 = false
 		if km < 15:
 			$"../Node2D3/AnimatedSprite2D8".position = Vector2(483,363)
 			$"../Node2D3/AnimatedSprite2D7".position = Vector2(489,363)
 			$"../Node2D3/AnimatedSprite2D6".position = Vector2(-149,-186)
 			$"../Node2D3/AnimatedSprite2D5".position = Vector2(493,364)
 			$"../Node2D3/AnimatedSprite2D4".position = Vector2(493,367)
-		if nkdc < 5:
+		if nkdc < 5 and $"../Distance Finder".visible == true:
 			_showtext("Equipped Distance Finder")
 			$"../Distance Finder".hide()
 			d41 = true
@@ -178,7 +195,17 @@ func _physics_process(delta):
 			g40 = d1
 		elif node2 == true:
 			g40 = d2
-		elif node3 == false:
+		elif node3 == true:
 			g40 = d3
+		elif node4 == true:
+			g40 = n1
+		elif node5 == true:
+			g40 = n2
+		elif node6 == true:
+			g40 = n3
+		elif node7 == true:
+			g40 = n4
+		elif node8 == true:
+			g40 = n5
 		else:
-			$"../CanvasLayer2/Label4".text = ""
+			$"../CanvasLayer2/Label4".text = "Error 404!"

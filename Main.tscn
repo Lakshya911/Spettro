@@ -490,11 +490,11 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rlvi"]
 shader = SubResource("Shader_nsrco")
-shader_parameter/range = 0.05
+shader_parameter/range = 0.1
 shader_parameter/noiseQuality = 300.0
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = -0.005
-shader_parameter/colorOffsetIntensity = 1.3
+shader_parameter/noiseIntensity = 0.6
+shader_parameter/offsetIntensity = 0.1
+shader_parameter/colorOffsetIntensity = 5.0
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-664.0]
@@ -517,7 +517,7 @@ layer_3/tile_data = PackedInt32Array(917476, 131072, 0, 983012, 131072, 0, 10485
 
 [node name="Player" parent="." instance=ExtResource("2_u5xgl")]
 top_level = true
-z_index = 100
+z_index = 1000
 position = Vector2(-68.9999, -32)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player"]
@@ -771,6 +771,8 @@ stream = ExtResource("18_wsufj")
 
 [node name="Light" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("19_sqhlb")
+volume_db = 24.0
+pitch_scale = 135.0
 
 [node name="Node2D3" type="Node2D" parent="."]
 position = Vector2(-639, -540)
@@ -897,14 +899,15 @@ text = "100 m"
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 11
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
 top_level = true
 visibility_layer = 16
 material = SubResource("ShaderMaterial_7bbcr")
-position = Vector2(-1611.56, -121.31)
-scale = Vector2(4.44499, 3.78875)
+position = Vector2(597, 369)
+scale = Vector2(94.815, 80.821)
 sprite_frames = SubResource("SpriteFrames_to3qj")
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer3/AnimatedSprite2D4"]
@@ -912,10 +915,10 @@ material = SubResource("ShaderMaterial_7rlvi")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -7.97299
-offset_top = -8.62817
-offset_right = -7.97299
-offset_bottom = -8.62817
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
