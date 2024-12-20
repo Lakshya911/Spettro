@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var Speed = 20
+@export var Speed : int = 20
 var node1 : bool = true
 var node2 : bool = true
 var node3 : bool = true
@@ -10,32 +10,25 @@ var node6 : bool = true
 var node7 : bool = true
 var node8 : bool = true
 var km : float;
-var x1;
-var x2;
-var y1;
-var y2;
-var c1 = 0
-var x5 = 0
-var x3 = 0
-var x8;
-var x9;
-var x10;
-var d1 = 0
-var d2 = 0
-var d3 = 0
-var amtkey = 0
-var n1;
-var n2;
-var n3;
-var n4;
-var n5;
-var d4;
-var txt;
-var nkdc;
-var tx2;
+var x1 : Vector2;
+var y2 : Vector2;
+var x5 : float = 0
+var d1 : float = 0
+var d2 : float = 0
+var d3 : float = 0
+var amtkey : int = 0
+var n1 : float;
+var n2 : float;
+var n3 : float;
+var n4 : float;
+var n5 : float;
+var d4 : Vector2;
+var txt : String;
+var nkdc : float;
+var tx2 : int;
 var d41 : bool = false
 var g40 : float;
-func _change():
+func _change() -> void:
 	get_tree().change_scene_to_file.bind("res://Ded.tscn").call_deferred()
 func _showtext(txt) -> void:
 	$"../CanvasLayer2/Label3".text = txt
@@ -99,6 +92,7 @@ func _physics_process(delta):
 			$"../CanvasLayer2/Label".visible = false
 			$"../CanvasLayer2/Label3".visible = false
 			$"../CanvasLayer2/Label4".visible = false
+			
 			Speed = 0
 			$"../Sound/Jumpscare".play()
 			await get_tree().create_timer(2).timeout

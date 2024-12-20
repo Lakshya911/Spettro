@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cbyyvhqym4dhx"]
+[gd_scene load_steps=75 format=3 uid="uid://cbyyvhqym4dhx"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_dfkgm"]
 [ext_resource type="PackedScene" uid="uid://sukhyb6cw132" path="res://MainCharecter.tscn" id="2_u5xgl"]
@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://cevd5jlcj8bii" path="res://scary-scream-3-81274.mp3" id="18_wsufj"]
 [ext_resource type="AudioStream" uid="uid://cs6hgjn3outd4" path="res://light-switch-off-86314.mp3" id="19_sqhlb"]
 [ext_resource type="Shader" path="res://Main.gdshader" id="20_bcf2x"]
-[ext_resource type="Shader" path="res://Main22.gdshader" id="20_cok10"]
 [ext_resource type="Shader" path="res://Main11.gdshader" id="21_je3iy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1e7kw"]
@@ -419,9 +418,6 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4lj7y"]
 light_mode = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bbcr"]
-shader = ExtResource("20_cok10")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2j17"]
 atlas = ExtResource("1_dfkgm")
 region = Rect2(0, 0, 16, 16)
@@ -491,8 +487,8 @@ void fragment()
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rlvi"]
 shader = SubResource("Shader_nsrco")
 shader_parameter/range = 0.1
-shader_parameter/noiseQuality = 300.0
-shader_parameter/noiseIntensity = 0.6
+shader_parameter/noiseQuality = 151.5
+shader_parameter/noiseIntensity = -0.35
 shader_parameter/offsetIntensity = 0.1
 shader_parameter/colorOffsetIntensity = 5.0
 
@@ -827,6 +823,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_js6ms")
@@ -835,6 +832,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
 visibility_layer = 524288
@@ -905,7 +903,6 @@ layer = 11
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
 top_level = true
 visibility_layer = 16
-material = SubResource("ShaderMaterial_7bbcr")
 position = Vector2(597, 369)
 scale = Vector2(94.815, 80.821)
 sprite_frames = SubResource("SpriteFrames_to3qj")
@@ -921,6 +918,19 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer3"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -476.0
+offset_top = -316.0
+offset_right = -476.0
+offset_bottom = -316.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.845, 1.845)
 
 [connection signal="timeout" from="Timer" to="Node2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="Ghost" method="_on_timer_2_timeout"]
