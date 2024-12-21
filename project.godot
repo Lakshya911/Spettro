@@ -33,7 +33,7 @@ gdscript/warnings/return_value_discarded=1
 
 [display]
 
-window/size/mode=3
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor]

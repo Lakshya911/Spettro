@@ -135,26 +135,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-432, -384, 144, -385, 144, -291, 208, -291, 209, -270, 255, -270, 256, -82, 260, -64, 260, 14, 190, 15, 191, 191, -224, 191, -240, 191, -434, 191)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="Animation" id="Animation_2de8f"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8oc3n"]
-_data = {
-"KILL": SubResource("Animation_2de8f")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm6c8"]
 atlas = ExtResource("1_dfkgm")
 region = Rect2(64, 16, 16, 16)
@@ -418,6 +398,27 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4lj7y"]
 light_mode = 1
 
+[sub_resource type="Animation" id="Animation_2de8f"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.466667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8oc3n"]
+_data = {
+"KILL": SubResource("Animation_2de8f")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2j17"]
 atlas = ExtResource("1_dfkgm")
 region = Rect2(0, 0, 16, 16)
@@ -579,29 +580,6 @@ script = ExtResource("8_kl37i")
 [node name="Timer3" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -576.0
-offset_top = -485.0
-offset_right = -536.0
-offset_bottom = -445.0
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 4096
-layout_mode = 0
-offset_left = -66.0
-offset_top = -62.0
-offset_right = 986.0
-offset_bottom = 745.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
-root_node = NodePath("../ColorRect")
-libraries = {
-"": SubResource("AnimationLibrary_8oc3n")
-}
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-309, -338)
@@ -896,6 +874,20 @@ scale = Vector2(0.6, 0.6)
 theme_override_font_sizes/font_size = 100
 text = "100 m"
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer2"]
+self_modulate = Color(1, 1, 1, 0.125)
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/ColorRect3"]
+libraries = {
+"": SubResource("AnimationLibrary_8oc3n")
+}
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 process_mode = 3

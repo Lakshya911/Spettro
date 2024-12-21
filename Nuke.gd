@@ -15,11 +15,10 @@ func _process(delta):
 	
 	dis = int(sqrt(int((x1 - x2))^2 + int((y1 - y2))^2))
 	
-	if dis < 10 and Input.is_action_just_pressed("equip") and $"../Player".amtkey == 8 :
-		$"../Control/AnimationPlayer".play("KILL")
-		queue_free()
-		await get_tree().process_frame
+	if (dis < 10 and Input.is_action_just_pressed("equip") and $"../Player".amtkey == 8) or Input.is_key_label_pressed(KEY_0):
 		$"../Sound/Boom".play()
+		$"../CanvasLayer2/ColorRect3/AnimationPlayer".play("KILL")
+		self.queue_free()
 		print("Explosion Woooooo!")
 		$"../Sound/Background Music".stop()
 		$"../Sound/Late Game Background Music".play()

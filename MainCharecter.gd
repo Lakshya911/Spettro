@@ -59,11 +59,14 @@ func _ready():
 	$"../CanvasLayer2/Label3".text = ""
 	$"../CanvasLayer2/Label4".text = ""
 	_showtext("Pick up the device using E")  #Replace E with control when control system is working
+	Speed = 0
 	preload("res://Ded.tscn")
 	#Distance b/w player and keys
 	$"../CanvasLayer".visible = false
 	$"../CanvasLayer3".visible = false
 func _process(delta):
+	if Input.is_key_label_pressed(KEY_O):
+		get_tree().paused = true
 	d4 = Vector2(-116,-34)
 	if velocity.x > 0:
 		while true:
@@ -123,6 +126,7 @@ func _physics_process(delta):
 		$"../ParallaxBackground".visible = false
 	#IDK!
 	if Input.is_action_just_pressed("equip"):
+		Speed = 20
 		if d1 < 6:
 			$"../AnimatedSprite2D".queue_free()
 			_showtext("Key Equipped")
@@ -169,7 +173,7 @@ func _physics_process(delta):
 			$"../Node2D3/AnimatedSprite2D6".position = Vector2(-149,-186)
 			$"../Node2D3/AnimatedSprite2D5".position = Vector2(493,364)
 			$"../Node2D3/AnimatedSprite2D4".position = Vector2(493,367)
-		if nkdc < 5 and $"../Distance Finder".visible == true:
+		if nkdc < 8 and $"../Distance Finder".visible == true:
 			_showtext("Equipped Distance Finder")
 			$"../Distance Finder".hide()
 			d41 = true
