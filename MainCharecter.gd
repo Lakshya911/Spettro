@@ -104,8 +104,9 @@ func _physics_process(delta):
 				$".".hide()
 				$"../ParallaxBackground".hide()
 				await get_tree().create_timer(2).timeout
-				$"../CanvasLayer3".visible = true
 				$"../Sound/After Jumpscare".play()
+				await get_tree().process_frame
+				$"../CanvasLayer3".visible = true
 				if $"../Sound/After Jumpscare".finished:
 					await get_tree().create_timer(1.5).timeout
 					_change()

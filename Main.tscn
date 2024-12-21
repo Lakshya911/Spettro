@@ -543,6 +543,7 @@ fixed_fps = 60
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-30, 40)
+color = Color(0, 0, 0, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_rro1y")]
 layer = 0
@@ -752,7 +753,7 @@ parameters/looping = true
 process_mode = 3
 position = Vector2(-149, -186)
 stream = ExtResource("16_e8kri")
-volume_db = 7.32
+volume_db = 8.43
 
 [node name="Equip" type="AudioStreamPlayer2D" parent="Sound"]
 process_mode = 3
