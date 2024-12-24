@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sukhyb6cw132"]
+[gd_scene load_steps=10 format=3 uid="uid://sukhyb6cw132"]
 
 [ext_resource type="Script" path="res://MainCharecter.gd" id="1_lq6u7"]
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_v00im"]
@@ -7,9 +7,13 @@
 atlas = ExtResource("1_v00im")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwi7j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpik5"]
 atlas = ExtResource("1_v00im")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kixc"]
+atlas = ExtResource("1_v00im")
+region = Rect2(80, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2eqjv"]
 animations = [{
@@ -18,15 +22,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_ub1ui")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rwi7j")
+"texture": SubResource("AtlasTexture_tpik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kixc")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4os2"]
-radius = 5.45773
+[sub_resource type="CircleShape2D" id="CircleShape2D_1boyd"]
+radius = 6.78124
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j84yn"]
 atlas = ExtResource("1_v00im")
@@ -49,13 +56,15 @@ slide_on_ceiling = false
 script = ExtResource("1_lq6u7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.5, 0)
+position = Vector2(-1.19209e-07, 0)
 sprite_frames = SubResource("SpriteFrames_2eqjv")
+autoplay = "default"
+frame_progress = 0.563272
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-scale = Vector2(0.92, 1)
-shape = SubResource("CircleShape2D_g4os2")
+position = Vector2(0.484, -0.519)
+scale = Vector2(0.565, 0.616)
+shape = SubResource("CircleShape2D_1boyd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(10.805, 10.805)

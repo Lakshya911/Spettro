@@ -16,11 +16,11 @@ func _get_calculations():
 	x8 = $"../AnimatedSprite2D".global_position
 	x9 = $"../AnimatedSprite2D2".global_position
 	x10 = $"../AnimatedSprite2D3".global_position
-	n1 = $"../Node2D3/AnimatedSprite2D4".global_position
-	n2 = $"../Node2D3/AnimatedSprite2D5".global_position
-	n3 = $"../Node2D3/AnimatedSprite2D6".global_position
-	n4 = $"../Node2D3/AnimatedSprite2D7".global_position
-	n5 = $"../Node2D3/AnimatedSprite2D8".global_position
+	n1 = $"../AnimatedSprite2D4".global_position
+	n2 = $"../AnimatedSprite2D5".global_position
+	n3 = $"../AnimatedSprite2D6".global_position
+	n4 = $"../AnimatedSprite2D7".global_position
+	n5 = $"../AnimatedSprite2D8".global_position
 func _ready():
 	var p1 = $Node2D4/Marker2D.global_position
 	var p2 = $Node2D5/Marker2D.global_position
@@ -57,24 +57,21 @@ func _ready():
 			$"../AnimatedSprite2D3".position = o
 			print("no error")
 		if o1 == 5 and typeof(o) == TYPE_VECTOR2:
-			$"../Node2D3/AnimatedSprite2D4".position = o
+			$"../AnimatedSprite2D4".position = o
 			print("no error")
 		if o1 == 6 and typeof(o) == TYPE_VECTOR2:
-			$"../Node2D3/AnimatedSprite2D5".position = o
+			$"../AnimatedSprite2D5".position = o
 			print("no error")
 		if o1 == 7 and typeof(o) == TYPE_VECTOR2:
-			$"../Node2D3/AnimatedSprite2D6".position = o
+			$"../AnimatedSprite2D6".position = o
 			print("no error")
 		if o1 == 8 and typeof(o) == TYPE_VECTOR2:
-			$"../Node2D3/AnimatedSprite2D7".position = o
+			$"../AnimatedSprite2D7".position = o
 			print("no error")
 		if o1 == 9 and typeof(o) == TYPE_VECTOR2:
-			$"../Node2D3/AnimatedSprite2D8".position = o
+			$"../AnimatedSprite2D8".position = o
 			print("no error")
 		if o1 == 10 and typeof(o) == TYPE_VECTOR2:
 			$"../Player".position = o
 			print("no error")
-			$"../Distance Finder".position.x = $"../Player".position.x + 5
-			$"../Distance Finder".position.y = $"../Player".position.y - 5
-			nkcn = $"../Distance Finder".global_position
 	_get_calculations()

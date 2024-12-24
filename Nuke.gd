@@ -28,7 +28,7 @@ func _process(delta):
 		$"../Ghost".o2 = 20
 		$"../Node2D2".y = 0.048
 		$"../Timer4".start()
-		$"../CanvasLayer2/Label".text = "Survive for 3 minutes"
+		$"../Player"._showtext("Survive for 3 minutes")
 		
 
 func _on_timer_4_timeout():

@@ -1,9 +1,11 @@
 extends CharacterBody2D
+#region Variables
+var op : Vector2;
 @export var Speed : int = 20
 var node1 : bool = true
 var node2 : bool = true
 var node3 : bool = true
-
+var dashavail : bool = true
 var node4 : bool = true
 var node5 : bool = true
 var node6 : bool = true
@@ -24,10 +26,11 @@ var n4 : float;
 var n5 : float;
 var d4 : Vector2;
 var txt : String;
-var nkdc : float;
 var tx2 : int;
 var d41 : bool = false
 var g40 : float;
+#endregion
+#region Functions
 func _change() -> void:
 	get_tree().change_scene_to_file.bind("res://Ded.tscn").call_deferred()
 func _showtext(txt) -> void:
@@ -46,14 +49,15 @@ func _do_distance_calc():
 	n3 = y2.distance_to($"../Points".n3)
 	n4 = y2.distance_to($"../Points".n4)
 	n5 = y2.distance_to($"../Points".n5)
-	nkdc = y2.distance_to($"../Points".nkcn)
 	km = y2.distance_to(Vector2(490,360))
-	print("nkdc = ", nkdc)
 func _equip(tx2):
 	amtkey += tx2
 	print("ok")
 	$"../Sound/Equip".play()
+#endregion
+#region Other Functions
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$"../CanvasLayer2/Label".text = ""
 	$"../CanvasLayer2/Label2".text = ""
 	$"../CanvasLayer2/Label3".text = ""
@@ -74,7 +78,9 @@ func _process(delta):
 	elif velocity.y > 0:
 		while true:
 			velocity.y -= 20
+#endregion
 func _physics_process(delta):
+#region Movement And Distance Calculations
 	_do_distance_calc()
 	print("d1 = ",d1)
 	print("d2 = ",d2)
@@ -89,6 +95,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("d"):
 		position.x += Speed * delta
 	move_and_slide()                   #Movement
+#endregion
+#region Jumpscare
 	if $"../Ghost".visible == true or Input.is_key_label_pressed(KEY_P):    #Distance b/w ghost and player is less then change scene
 		if x5 < 4 or Input.is_key_label_pressed(KEY_P):
 			$"../CanvasLayer2/Label2".visible = false
@@ -115,6 +123,8 @@ func _physics_process(delta):
 					_change()
 					pass 
 			print("true tooo")
+#endregion
+#region Debug
 	#IDK
 	if Input.is_key_label_pressed(KEY_G):
 		self.global_position = $"../AnimatedSprite2D".global_position
@@ -125,6 +135,8 @@ func _physics_process(delta):
 		$"../CanvasModulate".color = Color(1 , 1 , 1)
 		$"../ParallaxBackground".visible = false
 	#IDK!
+#endregion
+#region Equipping
 	if Input.is_action_just_pressed("equip"):
 		Speed = 20
 		if d1 < 6:
@@ -143,51 +155,65 @@ func _physics_process(delta):
 			_equip(1)
 			node3 = false
 		if n1 < 6:
-			$"../Node2D3/AnimatedSprite2D4".queue_free()
+			$"../AnimatedSprite2D4".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node4 = false
 		if n2 < 6:
-			$"../Node2D3/AnimatedSprite2D5".queue_free()
+			$"../AnimatedSprite2D5".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node5 = false
 		if n3 < 6:
-			$"../Node2D3/AnimatedSprite2D6".queue_free()
+			$"../AnimatedSprite2D6".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node6 = false
 		if n4 < 6:
-			$"../Node2D3/AnimatedSprite2D7".queue_free()
+			$"../AnimatedSprite2D7".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node7 = false
 		if n5 < 6:
-			$"../Node2D3/AnimatedSprite2D8".queue_free()
+			$"../AnimatedSprite2D8".queue_free()
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node8 = false
 		if km < 15:
-			$"../Node2D3/AnimatedSprite2D8".position = Vector2(483,363)
-			$"../Node2D3/AnimatedSprite2D7".position = Vector2(489,363)
-			$"../Node2D3/AnimatedSprite2D6".position = Vector2(-149,-186)
-			$"../Node2D3/AnimatedSprite2D5".position = Vector2(493,364)
-			$"../Node2D3/AnimatedSprite2D4".position = Vector2(493,367)
-		if nkdc < 8 and $"../Distance Finder".visible == true:
+			$"../AnimatedSprite2D8".position = Vector2(483,363)
+			$"../AnimatedSprite2D7".position = Vector2(489,363)
+			$"../AnimatedSprite2D6".position = Vector2(-149,-186)
+			$"../AnimatedSprite2D5".position = Vector2(493,364)
+			$"../AnimatedSprite2D4".position = Vector2(493,367)
+		if $"Distance Finder".visible == true:
 			_showtext("Equipped Distance Finder")
-			$"../Distance Finder".hide()
+			$"Distance Finder".hide()
 			d41 = true
 			await get_tree().process_frame
 			_showtext("You can use this to find distance b/w you and the keys")
 			$"../Sound/Equip".play()
-	if Input.is_action_just_pressed("r") and amtkey == 8:
-		pass
+#endregion
+#region Other Inputs
+	if Input.is_action_just_pressed("mblft") and dashavail == true:
+		dashavail = false
+		global_position = $"../DashCursor".global_position
+		$"../CanvasLayer2/ProgressBar".value = 0
+		await get_tree().create_timer(5).timeout
+		dashavail = true
 	if Input.is_action_just_pressed("esc") and $"../CanvasLayer".visible == false:
 		$"../CanvasLayer".visible = true
 		get_tree().paused = true
 	elif Input.is_action_just_pressed("esc") and $"../CanvasLayer".visible == true:
 		$"../CanvasLayer".visible = false
 		get_tree().paused = false
+	if dashavail == true:
+		$"../DashCursor".global_position = get_global_mouse_position()
+	if dashavail == true:
+		$"../CanvasLayer2/ProgressBar".value = 1
+	elif dashavail == false:
+		$"../CanvasLayer2/ProgressBar".value = 0
+#endregion
+#region Text
 	if d41 == true:
 		$"../CanvasLayer2/Label4".text = "Distance: " + str(int(g40)) + "m"
 		if node1 == true:
@@ -208,3 +234,4 @@ func _physics_process(delta):
 			g40 = n5
 		else:
 			$"../CanvasLayer2/Label4".text = "Error 404!"
+#endregion

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7tnh5dl1ip0g"]
+
+[ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_m0rww"]
+[ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_25l0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m6bh"]
+atlas = ExtResource("1_m0rww")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3hgo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m6bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8x2e"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c3hgo")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-2, -1)
+energy = 0.54
+texture = ExtResource("2_25l0u")
+offset = Vector2(2, 0)
+texture_scale = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x8x2e")
