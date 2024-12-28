@@ -207,8 +207,6 @@ func _physics_process(delta):
 		$"../CanvasLayer".visible = false
 		get_tree().paused = false
 	if dashavail == true:
-		$"../DashCursor".global_position = get_global_mouse_position()
-	if dashavail == true:
 		$"../CanvasLayer2/ProgressBar".value = 1
 	elif dashavail == false:
 		$"../CanvasLayer2/ProgressBar".value = 0

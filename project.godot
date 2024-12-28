@@ -45,6 +45,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/object_state_machine/plugin.cfg")
 
+[global_group]
+
+cursor=""
+
 [gui]
 
 theme/default_theme_scale=0.5

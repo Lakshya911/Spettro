@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cbyyvhqym4dhx"]
+[gd_scene load_steps=82 format=3 uid="uid://cbyyvhqym4dhx"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_dfkgm"]
 [ext_resource type="PackedScene" uid="uid://sukhyb6cw132" path="res://MainCharecter.tscn" id="2_u5xgl"]
@@ -75,13 +75,16 @@ texture = ExtResource("1_dfkgm")
 15:0/0 = 0
 15:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jib3j")
 15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.03293, -8, 2.20971, -8, 2.20971, 8, -2.20971, 8)
+15:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 0:1/0 = 0
 14:1/0 = 0
 14:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_xw0gq")
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 15:1/0 = 0
 15:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_j1c8f")
 15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.85616, 8, -2.03293, 8, 0.972272, -8, 0.972272)
+15:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 5:1/0 = 0
 6:1/size_in_atlas = Vector2i(2, 2)
 6:1/0 = 0
@@ -100,8 +103,11 @@ texture = ExtResource("1_dfkgm")
 [sub_resource type="TileSet" id="TileSet_fxvpj"]
 occlusion_layer_0/light_mask = 1023
 occlusion_layer_0/sdf_collision = true
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_1e7kw")
+physics_layer_1/collision_layer = 4
+physics_layer_1/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_euudi")
 
 [sub_resource type="Gradient" id="Gradient_wlk8q"]
@@ -494,6 +500,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op4u7"]
+size = Vector2(68, 609)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvr2e"]
+size = Vector2(592, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neilr"]
+size = Vector2(637, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31c4p"]
+size = Vector2(108, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pthrj"]
+size = Vector2(108, 318)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bf0x"]
+size = Vector2(140, 136)
+
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-664.0]
 
@@ -709,6 +733,7 @@ script = ExtResource("7_dd1hk")
 [node name="CanvasLayer" parent="." instance=ExtResource("11_6ivha")]
 process_mode = 3
 layer = 4
+visible = false
 scale = Vector2(1.23, 1.18)
 transform = Transform2D(1.23, 0, 0, 1.18, 0, 0)
 
@@ -759,6 +784,7 @@ environment = SubResource("Environment_q0cev")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 3
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_a3p05")
@@ -873,17 +899,18 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="CanvasLayer2/ProgressBar"]
 layout_mode = 0
-offset_left = -81.0
+offset_left = -139.0
 offset_top = -7.0
-offset_right = 166.0
+offset_right = 256.0
 offset_bottom = 149.0
 scale = Vector2(0.32, 0.32)
 theme_override_font_sizes/font_size = 100
-text = "Dash"
+text = "Teleport"
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 11
+visible = false
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
 top_level = true
@@ -924,6 +951,8 @@ light_mask = 0
 z_index = 200
 position = Vector2(119, -369)
 scale = Vector2(0.4, 0.4)
+collision_layer = 6
+collision_mask = 6
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
 z_index = 100
@@ -951,6 +980,53 @@ sprite_frames = SubResource("SpriteFrames_pbfsq")
 z_index = 100
 position = Vector2(-23, -251)
 sprite_frames = SubResource("SpriteFrames_wj2dd")
+
+[node name="Area2D" type="Area2D" parent="." groups=["cursor"]]
+position = Vector2(-438, -390)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["cursor"]]
+position = Vector2(-26, 294.5)
+shape = SubResource("RectangleShape2D_op4u7")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["cursor"]]
+unique_name_in_owner = true
+position = Vector2(-370, -389)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" groups=["cursor"]]
+position = Vector2(235, -32.5)
+shape = SubResource("RectangleShape2D_hvr2e")
+
+[node name="Area2D3" type="Area2D" parent="." groups=["cursor"]]
+unique_name_in_owner = true
+position = Vector2(-370, 262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" groups=["cursor"]]
+position = Vector2(257.5, -32.5)
+shape = SubResource("RectangleShape2D_neilr")
+
+[node name="Area2D4" type="Area2D" parent="." groups=["cursor"]]
+unique_name_in_owner = true
+position = Vector2(204, 142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4" groups=["cursor"]]
+position = Vector2(42, 0)
+shape = SubResource("RectangleShape2D_31c4p")
+
+[node name="Area2D5" type="Area2D" parent="." groups=["cursor"]]
+unique_name_in_owner = true
+position = Vector2(204, 142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5" groups=["cursor"]]
+position = Vector2(107, -272)
+shape = SubResource("RectangleShape2D_pthrj")
+
+[node name="Area2D6" type="Area2D" parent="." groups=["cursor"]]
+unique_name_in_owner = true
+position = Vector2(91, -176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6" groups=["cursor"]]
+position = Vector2(123, -163)
+shape = SubResource("RectangleShape2D_8bf0x")
 
 [connection signal="timeout" from="Timer" to="Node2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="Ghost" method="_on_timer_2_timeout"]
