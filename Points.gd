@@ -73,5 +73,10 @@ func _ready():
 			print("no error")
 		if o1 == 10 and typeof(o) == TYPE_VECTOR2:
 			$"../Player".position = o
+			$"../Player/DashCursor".position = o
 			print("no error")
 	_get_calculations()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

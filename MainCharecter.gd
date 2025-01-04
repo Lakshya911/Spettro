@@ -2,6 +2,7 @@ extends CharacterBody2D
 #region Variables
 var op : Vector2;
 @export var Speed : int = 20
+var dsh : float;
 var node1 : bool = true
 var node2 : bool = true
 var node3 : bool = true
@@ -50,9 +51,9 @@ func _do_distance_calc():
 	n4 = y2.distance_to($"../Points".n4)
 	n5 = y2.distance_to($"../Points".n5)
 	km = y2.distance_to(Vector2(490,360))
+	dsh = y2.distance_to($DashCursor.global_position)
 func _equip(tx2):
 	amtkey += tx2
-	print("ok")
 	$"../Sound/Equip".play()
 #endregion
 #region Other Functions
@@ -82,10 +83,6 @@ func _process(delta):
 func _physics_process(delta):
 #region Movement And Distance Calculations
 	_do_distance_calc()
-	print("d1 = ",d1)
-	print("d2 = ",d2)
-	print("d3 = ",d3)
-	print("y2 = ",y2)
 	if Input.is_action_pressed("w"):
 		position.y -= Speed * delta
 	if Input.is_action_pressed("s"):
@@ -103,7 +100,6 @@ func _physics_process(delta):
 			$"../CanvasLayer2/Label".visible = false
 			$"../CanvasLayer2/Label3".visible = false
 			$"../CanvasLayer2/Label4".visible = false
-			
 			Speed = 0
 			$"../Sound/Jumpscare".play()
 			await get_tree().create_timer(2).timeout
@@ -116,13 +112,11 @@ func _physics_process(delta):
 				$"../ParallaxBackground".hide()
 				await get_tree().create_timer(2).timeout
 				$"../Sound/After Jumpscare".play()
-				await get_tree().process_frame
+				await get_tree().create_timer(2).timeout
 				$"../CanvasLayer3".visible = true
 				if $"../Sound/After Jumpscare".finished:
-					await get_tree().create_timer(1.5).timeout
 					_change()
 					pass 
-			print("true tooo")
 #endregion
 #region Debug
 	#IDK
@@ -138,7 +132,7 @@ func _physics_process(delta):
 #endregion
 #region Equipping
 	if Input.is_action_just_pressed("equip"):
-		Speed = 20
+		Speed = 20 * delta
 		if d1 < 6:
 			$"../AnimatedSprite2D".queue_free()
 			_showtext("Key Equipped")
@@ -194,9 +188,9 @@ func _physics_process(delta):
 			$"../Sound/Equip".play()
 #endregion
 #region Other Inputs
-	if Input.is_action_just_pressed("mblft") and dashavail == true:
+	if Input.is_action_just_pressed("mblft") and dashavail == true and dsh < 20:
 		dashavail = false
-		global_position = $"../DashCursor".global_position
+		global_position = $DashCursor.global_position
 		$"../CanvasLayer2/ProgressBar".value = 0
 		await get_tree().create_timer(5).timeout
 		dashavail = true
@@ -210,6 +204,9 @@ func _physics_process(delta):
 		$"../CanvasLayer2/ProgressBar".value = 1
 	elif dashavail == false:
 		$"../CanvasLayer2/ProgressBar".value = 0
+	if  dsh > 20:
+		dashavail == false
+		print(dsh)
 #endregion
 #region Text
 	if d41 == true:
