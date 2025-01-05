@@ -1,7 +1,8 @@
 extends CharacterBody2D
 #region Variables
+var jmpscr : bool = false
 var op : Vector2;
-@export var Speed : int = 20
+@export var Speed : int = 0
 var dsh : float;
 var node1 : bool = true
 var node2 : bool = true
@@ -64,14 +65,11 @@ func _ready():
 	$"../CanvasLayer2/Label3".text = ""
 	$"../CanvasLayer2/Label4".text = ""
 	_showtext("Pick up the device using E")  #Replace E with control when control system is working
-	Speed = 0
 	preload("res://Ded.tscn")
 	#Distance b/w player and keys
 	$"../CanvasLayer".visible = false
 	$"../CanvasLayer3".visible = false
 func _process(delta):
-	if Input.is_key_label_pressed(KEY_O):
-		get_tree().paused = true
 	d4 = Vector2(-116,-34)
 	if velocity.x > 0:
 		while true:
@@ -85,17 +83,22 @@ func _physics_process(delta):
 	_do_distance_calc()
 	if Input.is_action_pressed("w"):
 		position.y -= Speed * delta
+		print("w")
+		print(Speed)
 	if Input.is_action_pressed("s"):
 		position.y += Speed * delta
+		print("s")
 	if Input.is_action_pressed("a"):
 		position.x -= Speed * delta
+		print("a")
 	if Input.is_action_pressed("d"):
 		position.x += Speed * delta
+		print("d")
 	move_and_slide()                   #Movement
 #endregion
 #region Jumpscare
-	if $"../Ghost".visible == true or Input.is_key_label_pressed(KEY_P):    #Distance b/w ghost and player is less then change scene
-		if x5 < 4 or Input.is_key_label_pressed(KEY_P):
+	if $"../Ghost".visible == true:    #Distance b/w ghost and player is less then change scene
+		if x5 < 4:
 			$"../CanvasLayer2/Label2".visible = false
 			$"../CanvasLayer2/Label".visible = false
 			$"../CanvasLayer2/Label3".visible = false
@@ -112,16 +115,14 @@ func _physics_process(delta):
 				$"../ParallaxBackground".hide()
 				await get_tree().create_timer(2).timeout
 				$"../Sound/After Jumpscare".play()
-				await get_tree().create_timer(2).timeout
 				$"../CanvasLayer3".visible = true
+				await get_tree().create_timer(1).timeout
 				if $"../Sound/After Jumpscare".finished:
 					_change()
 					pass 
 #endregion
 #region Debug
 	#IDK
-	if Input.is_key_label_pressed(KEY_G):
-		self.global_position = $"../AnimatedSprite2D".global_position
 	if Input.is_action_just_pressed("k"):
 		$"../CanvasModulate".color = Color(0 , 0 , 0)
 		$"../ParallaxBackground".visible = true
@@ -132,7 +133,7 @@ func _physics_process(delta):
 #endregion
 #region Equipping
 	if Input.is_action_just_pressed("equip"):
-		Speed = 20 * delta
+		Speed = 20
 		if d1 < 6:
 			$"../AnimatedSprite2D".queue_free()
 			_showtext("Key Equipped")
@@ -206,7 +207,6 @@ func _physics_process(delta):
 		$"../CanvasLayer2/ProgressBar".value = 0
 	if  dsh > 20:
 		dashavail == false
-		print(dsh)
 #endregion
 #region Text
 	if d41 == true:

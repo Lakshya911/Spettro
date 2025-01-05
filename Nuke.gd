@@ -15,7 +15,7 @@ func _process(delta):
 	
 	dis = int(sqrt(int((x1 - x2))^2 + int((y1 - y2))^2))
 	
-	if (dis < 10 and Input.is_action_just_pressed("equip") and $"../Player".amtkey == 8) or Input.is_key_label_pressed(KEY_0):
+	if (dis < 10 and Input.is_action_just_pressed("equip") and $"../Player".amtkey == 8):
 		$"../Sound/Boom".play()
 		$"../CanvasLayer2/ColorRect3/AnimationPlayer".play("KILL")
 		self.queue_free()
