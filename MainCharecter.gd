@@ -36,6 +36,7 @@ var g40 : float;
 func _change() -> void:
 	get_tree().change_scene_to_file.bind("res://Ded.tscn").call_deferred()
 func _showtext(txt) -> void:
+	$"../CanvasLayer2/Label3/AnimationPlayer".stop()
 	$"../CanvasLayer2/Label3".text = txt
 	$"../CanvasLayer2/Label3"/AnimationPlayer.play("new_animation")
 func _do_distance_calc():
@@ -56,6 +57,14 @@ func _do_distance_calc():
 func _equip(tx2):
 	amtkey += tx2
 	$"../Sound/Equip".play()
+func _doshit():
+	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",35)
+	_showtext("You need to find the 3 keys and all 5 nuke parts and go to the marked point on the map and put all these together to make the nuke..")
+	get_tree().paused = true
+	await get_tree().create_timer(5).timeout
+	_showtext("To find the map press Escape")
+	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",70)
+	get_tree().paused = false
 #endregion
 #region Other Functions
 func _ready():
@@ -64,11 +73,11 @@ func _ready():
 	$"../CanvasLayer2/Label2".text = ""
 	$"../CanvasLayer2/Label3".text = ""
 	$"../CanvasLayer2/Label4".text = ""
-	_showtext("Pick up the device using E")  #Replace E with control when control system is working
 	preload("res://Ded.tscn")
 	#Distance b/w player and keys
 	$"../CanvasLayer".visible = false
 	$"../CanvasLayer3".visible = false
+	_showtext("Pick up the device using E")  #Replace E with control when control system is working
 func _process(delta):
 	d4 = Vector2(-116,-34)
 	if velocity.x > 0:
@@ -184,9 +193,12 @@ func _physics_process(delta):
 			_showtext("Equipped Distance Finder")
 			$"Distance Finder".hide()
 			d41 = true
-			await get_tree().process_frame
-			_showtext("You can use this to find distance b/w you and the keys")
 			$"../Sound/Equip".play()
+			await get_tree().create_timer(2).timeout
+			get_tree().paused = true
+			_showtext("You can use this to find distance b/w you and the keys")
+			await get_tree().create_timer(4).timeout
+			_doshit() #Yes
 #endregion
 #region Other Inputs
 	if Input.is_action_just_pressed("mblft") and dashavail == true and dsh < 20:
@@ -197,10 +209,13 @@ func _physics_process(delta):
 		dashavail = true
 	if Input.is_action_just_pressed("esc") and $"../CanvasLayer".visible == false:
 		$"../CanvasLayer".visible = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().paused = true
 	elif Input.is_action_just_pressed("esc") and $"../CanvasLayer".visible == true:
 		$"../CanvasLayer".visible = false
 		get_tree().paused = false
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if dashavail == true:
 		$"../CanvasLayer2/ProgressBar".value = 1
 	elif dashavail == false:

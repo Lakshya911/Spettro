@@ -834,6 +834,7 @@ text = "hhhh"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="CanvasLayer2"]
+top_level = true
 visibility_layer = 524288
 material = SubResource("CanvasItemMaterial_m5ruq")
 anchors_preset = 2
