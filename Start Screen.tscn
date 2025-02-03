@@ -1,18 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://dke53oods4r1x"]
+[gd_scene load_steps=14 format=3 uid="uid://dke53oods4r1x"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_y6q1q"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_qvsky"]
-[ext_resource type="Script" path="res://Button.gd" id="4_sujtd"]
-[ext_resource type="Script" path="res://point_light_2d.gd" id="5_dsm6t"]
-[ext_resource type="Script" path="res://Button2.gd" id="5_o7etc"]
+[ext_resource type="Script" uid="uid://cmiteqo68nujk" path="res://Button.gd" id="4_sujtd"]
+[ext_resource type="Script" uid="uid://cdob6symqhs7n" path="res://point_light_2d.gd" id="5_dsm6t"]
+[ext_resource type="Script" uid="uid://0jkbbnklkkx7" path="res://Button2.gd" id="5_o7etc"]
 [ext_resource type="AudioStream" uid="uid://bgln22csrhouk" path="res://horror-background-atmosphere-for-scary-scenes-179446.mp3" id="6_j2pxw"]
 [ext_resource type="AudioStream" uid="uid://c6whga5vl5xd0" path="res://menu-selection-102220.mp3" id="6_ptakq"]
+[ext_resource type="Shader" path="res://Start Screen.gdshader" id="8_ye74n"]
 
 [sub_resource type="GDScript" id="GDScript_c1udk"]
 script/source = "extends Node2D
 
-func _process(delta: float) -> void:
-	pass
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _on_label_mouse_entered() -> void:
+	$AudioStreamPlayer2D2.play()
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkhi0"]
@@ -66,6 +71,12 @@ sources/0 = SubResource("TileSetAtlasSource_vkhi0")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmc6m"]
+shader = ExtResource("8_ye74n")
+shader_parameter/blur_amount = 2.481
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = null
+
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_c1udk")
 
@@ -81,7 +92,7 @@ position = Vector2(-11, 9)
 zoom = Vector2(2.18, 2.18)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0313726, 0, 0, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="."]
 
@@ -176,43 +187,6 @@ scale_amount_max = 2.42
 scale_amount_curve = SubResource("Curve_o6tcx")
 color = Color(1, 0, 0, 1)
 
-[node name="Button" type="Button" parent="."]
-offset_left = -231.0
-offset_top = -2.0
-offset_right = 4.99998
-offset_bottom = 158.0
-scale = Vector2(0.235, 0.235)
-theme_override_font_sizes/font_size = 100
-text = "Start
-"
-flat = true
-script = ExtResource("4_sujtd")
-
-[node name="Button2" type="Button" parent="."]
-offset_left = -228.0
-offset_top = 40.0
-offset_right = -14.0
-offset_bottom = 200.0
-scale = Vector2(0.23, 0.23)
-theme_override_font_sizes/font_size = 100
-text = "Quit
-"
-flat = true
-script = ExtResource("5_o7etc")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -254.0
-offset_top = -49.5628
-offset_right = -143.0
-offset_bottom = 0.437241
-scale = Vector2(0.145, 0.145)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 200
-text = "Spettro"
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(123, -46)
 energy = 0.07
@@ -228,7 +202,72 @@ parameters/looping = true
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ptakq")
+volume_db = 10.915
 pitch_scale = 5.8
 
-[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="Button2" to="Button2" method="_on_mouse_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_jmc6m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 89.32
+offset_top = -16.68
+offset_right = 325.32
+offset_bottom = 148.32
+grow_vertical = 2
+scale = Vector2(0.445, 0.445)
+theme_override_font_sizes/font_size = 100
+text = "Start
+"
+flat = true
+script = ExtResource("4_sujtd")
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 95.0
+offset_top = -252.0
+offset_right = 309.0
+offset_bottom = -87.0
+grow_vertical = 0
+scale = Vector2(0.445, 0.445)
+theme_override_font_sizes/font_size = 100
+text = "Quit
+"
+flat = true
+script = ExtResource("5_o7etc")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_top = 187.65
+offset_right = 717.0
+offset_bottom = 507.65
+scale = Vector2(0.43, 0.43)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 200
+text = "Spettro"
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 190.0
+offset_right = 326.0
+offset_bottom = 305.0
+uri = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Label" to="." method="_on_label_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/LinkButton" to="." method="_on_link_button_pressed"]

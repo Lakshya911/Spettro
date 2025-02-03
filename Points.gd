@@ -1,8 +1,4 @@
 extends Node2D
-var x = RandomNumberGenerator.new()
-var y;
-var o;
-var o1 = 0
 var x8;
 var x9;
 var x10;
@@ -11,7 +7,16 @@ var n2;
 var n3;
 var n4;
 var n5;
-var nkcn : Vector2;
+var rng = RandomNumberGenerator.new()
+
+# Arrays for spawn positions
+var l1 : Array  # Specific objects' positions (AnimatedSprite2D1, 2, 3, Player, DashCursor)
+var l : Array    # Rest of the objects' positions
+
+# Reference to sprites and player
+var sprites : Array
+var player_and_cursor : Array
+
 func _get_calculations():
 	x8 = $"../AnimatedSprite2D".global_position
 	x9 = $"../AnimatedSprite2D2".global_position
@@ -21,62 +26,88 @@ func _get_calculations():
 	n3 = $"../AnimatedSprite2D6".global_position
 	n4 = $"../AnimatedSprite2D7".global_position
 	n5 = $"../AnimatedSprite2D8".global_position
+
 func _ready():
-	var p1 = $Node2D4/Marker2D.global_position
-	var p2 = $Node2D5/Marker2D.global_position
-	var p3 = $Node2D6/Marker2D.global_position
-	var p4 = $Node2D7/Marker2D.global_position
-	var p5 = $Node2D8/Marker2D.global_position
-	var p6 = $Node2D9/Marker2D.global_position
-	var p7 = $Node2D10/Marker2D.global_position
-	var p8 = $Node2D11/Marker2D.global_position
-	var p9 = $Node2D12/Marker2D.global_position
-	var p10 = $Node2D13/Marker2D.global_position
-	var p11 = $Node2D14/Marker2D.global_position
-	var p12 = $Node2D15/Marker2D.global_position
-	var p13 = $Node2D16/Marker2D.global_position
-	var p14 = $Node2D17/Marker2D.global_position
-	var p15 = $Node2D18/Marker2D.global_position
-	var p16 = $Node2D19/Marker2D.global_position
-	var l = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16]
-	while o1 != 11:
-		y = x.randi_range(0,16)
-		l.append(y)
-		o = l[y]
-		print("o= ",o)
-		o1 += 1 
-		if o1 == 4 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D".position = o
-			print("no error")
-		
-		if o1 == 2 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D2".position = o
-			print("no error")
-		
-		if o1 == 3 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D3".position = o
-			print("no error")
-		if o1 == 5 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D4".position = o
-			print("no error")
-		if o1 == 6 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D5".position = o
-			print("no error")
-		if o1 == 7 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D6".position = o
-			print("no error")
-		if o1 == 8 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D7".position = o
-			print("no error")
-		if o1 == 9 and typeof(o) == TYPE_VECTOR2:
-			$"../AnimatedSprite2D8".position = o
-			print("no error")
-		if o1 == 10 and typeof(o) == TYPE_VECTOR2:
-			$"../Player".position = o
-			$"../Player/DashCursor".position = o
-			print("no error")
+	# Initialize spawn points (l1 and l from your original code)
+	l1 = [
+		$Node2D6/Marker2D.global_position,
+		$Node2D7/Marker2D.global_position,
+		$Node2D12/Marker2D.global_position,
+		$Node2D13/Marker2D.global_position,
+		$Node2D18/Marker2D.global_position
+	]
+
+	l = [
+		$Node2D4/Marker2D.global_position,
+		$Node2D5/Marker2D.global_position,
+		$Node2D10/Marker2D.global_position,
+		$Node2D11/Marker2D.global_position,
+		$Node2D15/Marker2D.global_position,
+		$Node2D16/Marker2D.global_position,
+		$Node2D17/Marker2D.global_position,
+		$Node2D14/Marker2D.global_position,
+		$Node2D19/Marker2D.global_position,
+		$Node2D8/Marker2D.global_position,
+		$Node2D9/Marker2D.global_position
+	]
+
+	# Initialize sprites references (all sprites from your original code)
+	sprites = [
+		$"../AnimatedSprite2D", 
+		$"../AnimatedSprite2D2", 
+		$"../AnimatedSprite2D3", 
+		$"../AnimatedSprite2D4", 
+		$"../AnimatedSprite2D5", 
+		$"../AnimatedSprite2D6", 
+		$"../AnimatedSprite2D7", 
+		$"../AnimatedSprite2D8"
+	]
+
+	# Player and DashCursor references
+	player_and_cursor = [
+		$"../Player", 
+		$"../Player/DashCursor"
+	]
+
+	# Place specific objects (sprites 1, 2, 3, Player, DashCursor) at positions from l1
+	_place_random_positions_for_l1_objects()
+
+	# Place the rest of the objects (sprites 4-8) at positions from l
+	_place_random_positions_for_l_objects()
+	
+	get_tree().process_frame
+	
 	_get_calculations()
+# Function to place specific objects (sprites 1, 2, 3, Player, DashCursor) at positions from l1
+func _place_random_positions_for_l1_objects():
+	# Copy l1 to avoid reusing positions
+	var l1_positions = l1.duplicate()
 
+	# Place specific sprites (1, 2, 3) at positions from l1
+	for i in range(3):  # Index 0, 1, 2 corresponds to sprites 1, 2, 3
+		var random_index = rng.randi_range(0, l1_positions.size() - 1)
+		var position = l1_positions[random_index]
+		l1_positions.erase(random_index)  # Erase the position to avoid reuse
+		sprites[i].position = position
+		print(sprites[i].name, " placed at ", position)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	# Place Player and DashCursor at positions from l1
+	for obj in player_and_cursor:
+		var random_index = rng.randi_range(0, l1_positions.size() - 1)
+		var position = l1_positions[random_index]
+		l1_positions.erase(random_index)  # Erase the position to avoid reuse
+		obj.position = position
+		print(obj.name, " placed at ", position)
+
+# Function to place remaining objects (sprites 4-8) at positions from l
+func _place_random_positions_for_l_objects():
+	# Copy l to avoid reusing positions
+	var l_positions = l.duplicate()
+
+	# Place the remaining sprites (4, 5, 6, 7, 8) at positions from l
+	for i in range(3, sprites.size()):  # Index 3 to 7 corresponds to sprites 4-8
+		var random_index = rng.randi_range(0, l_positions.size() - 1)
+		var position = l_positions[random_index]
+		l_positions.erase(random_index)  # Erase the position to avoid reuse
+		sprites[i].position = position
+		print(sprites[i].name, " placed at ", position)

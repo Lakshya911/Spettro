@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqo3l00jm038p"]
+[gd_scene load_steps=12 format=3 uid="uid://bqo3l00jm038p"]
 
+[ext_resource type="Script" uid="uid://chm06yo3dyiua" path="res://ded.gd" id="1_6csmr"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="1_qwbs2"]
-[ext_resource type="AudioStream" uid="uid://h1sh5bl1r0tc" path="res://intense-horror-music-01-14890.mp3" id="2_5523u"]
+[ext_resource type="AudioStream" uid="uid://s0wwbl48uyw" path="res://horror-rumble-winds-253834.mp3" id="2_oqbmv"]
+[ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="3_qdbot"]
+[ext_resource type="AudioStream" uid="uid://cevd5jlcj8bii" path="res://scary-scream-3-81274.mp3" id="4_tqm1i"]
 
 [sub_resource type="Theme" id="Theme_t5268"]
 default_font_size = 100
@@ -20,6 +23,80 @@ func _process(delta):
 		get_tree().change_scene_to_file.bind(\"res://Start Screen.tscn\").call_deferred()
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2j17"]
+atlas = ExtResource("3_qdbot")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqm1i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2j17")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Shader" id="Shader_nsrco"]
+code = "shader_type canvas_item;
+
+uniform float range : hint_range(0.0, 0.1, 0.005)= 0.05;
+uniform float noiseQuality : hint_range(0.0, 300.0, 0.1)= 250.0;
+uniform float noiseIntensity : hint_range(-0.6, 0.6, 0.0010)= 0.0088;
+uniform float offsetIntensity : hint_range(-0.1, 0.1, 0.001) = 0.03;
+uniform float colorOffsetIntensity : hint_range(0.0, 5.0, 0.001) = 1.3;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+float rand(vec2 co)
+{
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+float verticalBar(float pos, float UVY, float offset)
+{
+    float edge0 = (pos - range);
+    float edge1 = (pos + range);
+
+    float x = smoothstep(edge0, pos, UVY) * offset;
+    x -= smoothstep(pos, edge1, UVY) * offset;
+    return x;
+}
+const float saturation = 0.2;
+void fragment()
+{
+    vec2 uv = SCREEN_UV;
+    for (float i = 0.0; i < 0.71; i += 0.1313)
+    {
+        float d = mod(TIME * i, 1.7);
+        float o = sin(1.0 - tan(TIME * 0.24 * i));
+    	o *= offsetIntensity;
+        uv.x += verticalBar(d, UV.y, o);
+    }
+    
+    float UVY = uv.y;
+    UVY *= noiseQuality;
+    UVY = float(int(UVY)) * (1.0 / noiseQuality);
+    float noise = rand(vec2(TIME * 0.00001, UVY));
+    uv.x += noise * noiseIntensity;
+
+    vec2 offsetR = vec2(0.009 * sin(TIME), 0.0) * colorOffsetIntensity;
+    vec2 offsetG = vec2(0.0073 * (cos(TIME * 0.97)), 0.0) * colorOffsetIntensity;
+    
+    float r = texture(SCREEN_TEXTURE, uv + offsetR).r;
+    float g = texture(SCREEN_TEXTURE, uv + offsetG).g;
+    float b = texture(SCREEN_TEXTURE, uv).b;
+    vec4 tex = vec4(r, g, b, 1.0);
+    COLOR = tex;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6csmr"]
+shader = SubResource("Shader_nsrco")
+shader_parameter/range = 0.1
+shader_parameter/noiseQuality = 151.5
+shader_parameter/noiseIntensity = -0.35
+shader_parameter/offsetIntensity = 0.1
+shader_parameter/colorOffsetIntensity = 5.0
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -27,6 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6csmr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 light_mask = 1023
@@ -45,6 +123,7 @@ offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.17, 0.17)
+pivot_offset = Vector2(0, -19.73)
 theme = SubResource("Theme_t5268")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
@@ -53,10 +132,31 @@ fit_content = true
 scroll_active = false
 script = SubResource("GDScript_3ttau")
 
-[node name="PointLight2D8" type="PointLight2D" parent="RichTextLabel"]
-position = Vector2(29, 10)
-energy = 0.1
-texture = ExtResource("1_qwbs2")
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+light_mask = 1023
+visibility_layer = 1023
+z_index = 8
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -596.0
+offset_top = -222.0
+offset_right = 1006.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.085, 0.085)
+pivot_offset = Vector2(0, 49.63)
+theme = SubResource("Theme_t5268")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[color=red][b][u]Press Esc[/u][/b][/color]"
+fit_content = true
+scroll_active = false
+script = SubResource("GDScript_3ttau")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -170,7 +270,53 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_5523u")
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_oqbmv")
 volume_db = -0.61
 parameters/looping = true
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+position = Vector2(-95.07, -29.3)
+scale = Vector2(0.17, 0.17)
+energy = 0.1
+texture = ExtResource("1_qwbs2")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 11
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
+top_level = true
+visibility_layer = 16
+position = Vector2(597, 369)
+scale = Vector2(94.815, 80.821)
+sprite_frames = SubResource("SpriteFrames_tqm1i")
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer3/AnimatedSprite2D4"]
+material = SubResource("ShaderMaterial_6csmr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer3"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.845, 1.845)
+
+[node name="Jumpscare" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tqm1i")
+volume_db = -6.725
+pitch_scale = 1.25
+autoplay = true
+
+[connection signal="finished" from="Jumpscare" to="." method="_on_jumpscare_finished"]

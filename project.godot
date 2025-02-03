@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spettro"
-config/version="0.5"
+config/version="1"
 run/main_scene="res://Start Screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/show_image=false
@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 [audio]
 
+driver/output_latency=1
+driver/output_latency.web=1
 driver/enable_input=true
 
 [debug]
@@ -43,11 +45,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/object_state_machine/plugin.cfg")
-
-[global_group]
-
-cursor=""
+enabled=PackedStringArray()
 
 [gui]
 
@@ -132,6 +130,7 @@ mblft={
 [physics]
 
 2d/run_on_separate_thread=true
+2d/physics_engine="GodotPhysics2D"
 
 [rendering]
 

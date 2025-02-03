@@ -1,21 +1,18 @@
 extends Node2D
 
 var x1;
-var x2;
 var y1;
-var y2;
 var dis;
 var ok = 0
 func _process(delta):
-	x1 = $"../Player".global_position.x
-	x2 = self.global_position.x
+	x1 = $"../Player".global_position
+	y1 = self.global_position
+	dis = y1.distance_to(x1)
 	
-	y1 = $"../Player".global_position.y
-	y2 = self.global_position.y
+	if dis < 60 and $"../Player".amtkey > 7:
+		$"../Player"._showtext("Go near area and press E")
 	
-	dis = int(sqrt(int((x1 - x2))^2 + int((y1 - y2))^2))
-	
-	if (dis < 10 and Input.is_action_just_pressed("equip") and $"../Player".amtkey == 8):
+	if (dis < 90 and Input.is_action_just_pressed("equip") and $"../Player".amtkey > 7):
 		$"../Sound/Boom".play()
 		$"../CanvasLayer2/ColorRect3/AnimationPlayer".play("KILL")
 		self.queue_free()
@@ -24,8 +21,8 @@ func _process(delta):
 		$"../Sound/Late Game Background Music".play()
 		$"../Ghost".x1 = 2
 		$"../Ghost".y1 = 5
-		$"../Ghost".o1 = 28
-		$"../Ghost".o2 = 20
+		$"../Ghost".o1 = 30
+		$"../Ghost".o2 = 23
 		$"../Node2D2".y = 0.048
 		$"../Timer4".start()
 		$"../Player"._showtext("Survive for 3 minutes")

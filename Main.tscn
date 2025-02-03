@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cbyyvhqym4dhx"]
+[gd_scene load_steps=82 format=3 uid="uid://cbyyvhqym4dhx"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_dfkgm"]
 [ext_resource type="PackedScene" uid="uid://sukhyb6cw132" path="res://MainCharecter.tscn" id="2_u5xgl"]
@@ -6,48 +6,27 @@
 [ext_resource type="PackedScene" uid="uid://c184xw77nf8i3" path="res://Fog.tscn" id="4_rro1y"]
 [ext_resource type="PackedScene" uid="uid://bqk7grudjkrka" path="res://Ghost.tscn" id="6_8n4ty"]
 [ext_resource type="PackedScene" uid="uid://6uke4p5jc36c" path="res://Nuke.tscn" id="7_3wiww"]
-[ext_resource type="Script" path="res://Lights.gd" id="7_dd1hk"]
+[ext_resource type="Script" uid="uid://bltpk3vjod0c2" path="res://Lights.gd" id="7_dd1hk"]
 [ext_resource type="PackedScene" uid="uid://8uxe8y04wxb6" path="res://Lights.tscn" id="7_gbm1c"]
-[ext_resource type="Script" path="res://Nuke.gd" id="8_kl37i"]
-[ext_resource type="Script" path="res://Points.gd" id="9_hwtl8"]
+[ext_resource type="Script" uid="uid://ckgy8pku4rfaf" path="res://Nuke.gd" id="8_kl37i"]
+[ext_resource type="Script" uid="uid://c287qv3rsqttu" path="res://Points.gd" id="9_hwtl8"]
 [ext_resource type="PackedScene" uid="uid://nbd1muqwflxc" path="res://SettingsUI.tscn" id="11_6ivha"]
 [ext_resource type="AudioStream" uid="uid://bgln22csrhouk" path="res://horror-background-atmosphere-for-scary-scenes-179446.mp3" id="12_6q722"]
-[ext_resource type="AudioStream" uid="uid://s0wwbl48uyw" path="res://horror-rumble-winds-253834.mp3" id="13_0ox8m"]
 [ext_resource type="AudioStream" uid="uid://dua18vfulnnax" path="res://item-equip-6904.mp3" id="14_dh0fc"]
 [ext_resource type="AudioStream" uid="uid://h1sh5bl1r0tc" path="res://intense-horror-music-01-14890.mp3" id="15_q544v"]
 [ext_resource type="AudioStream" uid="uid://cr2brsupk5hou" path="res://explosion-47821.mp3" id="16_e8kri"]
 [ext_resource type="PackedScene" uid="uid://dqkdd2cjrsd62" path="res://DIstanceFinder.tscn" id="17_0honw"]
 [ext_resource type="AudioStream" uid="uid://bac2xwrg7s8ug" path="res://woosh-building-109596.mp3" id="17_opfrb"]
-[ext_resource type="AudioStream" uid="uid://cevd5jlcj8bii" path="res://scary-scream-3-81274.mp3" id="18_wsufj"]
 [ext_resource type="AudioStream" uid="uid://cs6hgjn3outd4" path="res://light-switch-off-86314.mp3" id="19_sqhlb"]
 [ext_resource type="Shader" path="res://Main.gdshader" id="20_bcf2x"]
 [ext_resource type="Shader" path="res://Main11.gdshader" id="21_je3iy"]
+[ext_resource type="AudioStream" uid="uid://brp2rthxviyq" path="res://heartbeat-01-brvhrtz-225058.mp3" id="22_hpuku"]
 [ext_resource type="PackedScene" uid="uid://c7tnh5dl1ip0g" path="res://DashCursor.tscn" id="23_jdyxd"]
+[ext_resource type="AudioStream" uid="uid://c6whga5vl5xd0" path="res://menu-selection-102220.mp3" id="23_mxvw5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1e7kw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7i6v"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_37ekb"]
-polygon = PackedVector2Array(6.53584, -5.90588, 6.69333, 6.53584, -6.69333, 6.69333, -6.69333, -5.90588)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2jlrn"]
-polygon = PackedVector2Array(-3.01662, -3.99877, 2.31508, -4.13908, 8, -4.13908, 8, -1.89415, 8, -0.491077, 8, 1.89415, 8, 3.99877, 2.736, 4.27939, -0.912, 4.13908, -3.85846, 4.13908, -8, 3.85846, -8, -4.13908)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w3mvj"]
-polygon = PackedVector2Array(-2.87716, -5.25827, 2.67874, -4.86142, 5.54216, -3.57785, 6.80493, -0.912001, 6.66462, 1.75385, 4.98093, 4.84062, 1.89416, 6.80493, -1.05231, 6.80493, -4.27939, 5.68246, -5.96308, 2.59569, -5.96308, -2.17477)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3mout"]
-polygon = PackedVector2Array(-5.0625, -6.9375, 3.81968, -7.0937, 5.3125, 8, -5.21491, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xw0gq"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jib3j"]
-polygon = PackedVector2Array(-5.0625, -6.9375, 3.81968, -7.0937, 5.3125, 8, -5.21491, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j1c8f"]
-polygon = PackedVector2Array(6.53584, -5.90588, 6.69333, 6.53584, -6.69333, 6.69333, -6.69333, -5.90588)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_euudi"]
 texture = ExtResource("1_dfkgm")
@@ -62,29 +41,22 @@ texture = ExtResource("1_dfkgm")
 8:0/0 = 0
 9:0/0 = 0
 10:0/0 = 0
-10:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_37ekb")
 10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.9375, -6.1875, 6.84878, -5.95788, 6.79606, 6.89527, -6.99449, 7.19291)
 11:0/0 = 0
 12:0/0 = 0
-12:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_2jlrn")
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.97748, 8, -3.97748, 8, 3.97748, -8, 3.97748)
 13:0/0 = 0
-13:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_w3mvj")
 13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.09359, -4.86136, 2.91682, -4.86136, 5.40107, -3.28519, 6.96014, -0.612493, 6.84878, 1.94884, 4.95562, 4.95562, 1.94884, 6.84878, -0.946579, 7.07151, -4.62154, 5.6238, -5.84652, 2.50565, -5.73516, -1.83748)
 14:0/0 = 0
-14:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_3mout")
 14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.95562, -6.84878, 3.73064, -6.96014, 4.84426, 2.28293, 5.06699, 6.84878, 2.61701, 8, -5.06699, 8)
 15:0/0 = 0
-15:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jib3j")
 15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.03293, -8, 2.20971, -8, 2.20971, 8, -2.20971, 8)
 15:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 0:1/0 = 0
 14:1/0 = 0
-14:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_xw0gq")
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 15:1/0 = 0
-15:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_j1c8f")
 15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.85616, 8, -2.03293, 8, 0.972272, -8, 0.972272)
 15:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 5:1/0 = 0
@@ -120,7 +92,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0.495726, 0.495726, 0.495726, 1)
 gradient = SubResource("Gradient_wlk8q")
 
 [sub_resource type="Curve" id="Curve_qva8y"]
-min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -209,6 +180,8 @@ animations = [{
 
 [sub_resource type="Environment" id="Environment_q0cev"]
 background_mode = 3
+tonemap_mode = 2
+ssao_radius = 19.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3p05"]
 shader = ExtResource("20_bcf2x")
@@ -283,7 +256,7 @@ tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333, 0.466667, 5),
+"times": PackedFloat32Array(-0.0333333, 0.533333, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -293,80 +266,6 @@ tracks/0/keys = {
 _data = {
 "KILL": SubResource("Animation_2de8f")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2j17"]
-atlas = ExtResource("1_dfkgm")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_to3qj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h2j17")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Shader" id="Shader_nsrco"]
-code = "shader_type canvas_item;
-
-uniform float range : hint_range(0.0, 0.1, 0.005)= 0.05;
-uniform float noiseQuality : hint_range(0.0, 300.0, 0.1)= 250.0;
-uniform float noiseIntensity : hint_range(-0.6, 0.6, 0.0010)= 0.0088;
-uniform float offsetIntensity : hint_range(-0.1, 0.1, 0.001) = 0.03;
-uniform float colorOffsetIntensity : hint_range(0.0, 5.0, 0.001) = 1.3;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-float rand(vec2 co)
-{
-    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-}
-
-float verticalBar(float pos, float UVY, float offset)
-{
-    float edge0 = (pos - range);
-    float edge1 = (pos + range);
-
-    float x = smoothstep(edge0, pos, UVY) * offset;
-    x -= smoothstep(pos, edge1, UVY) * offset;
-    return x;
-}
-const float saturation = 0.2;
-void fragment()
-{
-    vec2 uv = SCREEN_UV;
-    for (float i = 0.0; i < 0.71; i += 0.1313)
-    {
-        float d = mod(TIME * i, 1.7);
-        float o = sin(1.0 - tan(TIME * 0.24 * i));
-    	o *= offsetIntensity;
-        uv.x += verticalBar(d, UV.y, o);
-    }
-    
-    float UVY = uv.y;
-    UVY *= noiseQuality;
-    UVY = float(int(UVY)) * (1.0 / noiseQuality);
-    float noise = rand(vec2(TIME * 0.00001, UVY));
-    uv.x += noise * noiseIntensity;
-
-    vec2 offsetR = vec2(0.009 * sin(TIME), 0.0) * colorOffsetIntensity;
-    vec2 offsetG = vec2(0.0073 * (cos(TIME * 0.97)), 0.0) * colorOffsetIntensity;
-    
-    float r = texture(SCREEN_TEXTURE, uv + offsetR).r;
-    float g = texture(SCREEN_TEXTURE, uv + offsetG).g;
-    float b = texture(SCREEN_TEXTURE, uv).b;
-    vec4 tex = vec4(r, g, b, 1.0);
-    COLOR = tex;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rlvi"]
-shader = SubResource("Shader_nsrco")
-shader_parameter/range = 0.1
-shader_parameter/noiseQuality = 151.5
-shader_parameter/noiseIntensity = -0.35
-shader_parameter/offsetIntensity = 0.1
-shader_parameter/colorOffsetIntensity = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ohhf"]
 atlas = ExtResource("1_dfkgm")
@@ -503,6 +402,162 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v12f"]
+size = Vector2(9.39588, 16)
+
+[sub_resource type="Animation" id="Animation_mxvw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 136)]
+}
+
+[sub_resource type="Animation" id="Animation_hhcpw"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrxkg"]
+_data = {
+"RESET": SubResource("Animation_mxvw5"),
+"new_animation": SubResource("Animation_hhcpw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhcpw"]
+size = Vector2(12, 16)
+
+[sub_resource type="Animation" id="Animation_oye8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_hri7i"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40n85"]
+_data = {
+"RESET": SubResource("Animation_oye8v"),
+"new_animation": SubResource("Animation_hri7i")
+}
+
+[sub_resource type="Animation" id="Animation_sqvbp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(136, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_xrxkg"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(136, -73), Vector2(152, -73)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hri7i"]
+_data = {
+"RESET": SubResource("Animation_sqvbp"),
+"new_animation": SubResource("Animation_xrxkg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxvw5"]
+size = Vector2(14.0268, 16)
+
+[sub_resource type="Animation" id="Animation_5mvff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-136, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_w3rk5"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-136, -73), Vector2(-120, -73)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oye8v"]
+_data = {
+"RESET": SubResource("Animation_5mvff"),
+"new_animation": SubResource("Animation_w3rk5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrxkg"]
+size = Vector2(14.0268, 16)
+
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-664.0]
 
@@ -525,7 +580,7 @@ layer_3/tile_data = PackedInt32Array(1048548, 131072, 0, 1114084, 131072, 0, 117
 [node name="Player" parent="." instance=ExtResource("2_u5xgl")]
 top_level = true
 z_index = 1000
-position = Vector2(134, -370)
+position = Vector2(-383, 163)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player"]
 position = Vector2(47.1429, -7.14285)
@@ -538,7 +593,7 @@ position = Vector2(4.28571, 4.28571)
 color = Color(0.401786, 0.17342, 9.62615e-08, 1)
 energy = 1.4
 texture = ExtResource("3_7f42c")
-texture_scale = 0.15
+texture_scale = 0.2
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Player"]
 scale = Vector2(1.42857, 1.42857)
@@ -559,16 +614,20 @@ scale = Vector2(0.471429, 0.471429)
 [node name="DashCursor" parent="Player" instance=ExtResource("23_jdyxd")]
 top_level = true
 z_index = 100
-position = Vector2(128, -370)
+position = Vector2(-375, 162)
 scale = Vector2(0.335, 0.335)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
+platform_wall_layers = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(-30, 40)
+color = Color(0, 0, 0, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_rro1y")]
 layer = 0
+visible = false
 offset = Vector2(-479.86, -415.66)
 scale = Vector2(1.195, 1.79)
 transform = Transform2D(1.195, 0, 0, 1.79, -479.86, -415.66)
@@ -603,7 +662,7 @@ wait_time = 3.5
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-309, -338)
+position = Vector2(-215.6, 31.4)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_thp5u")
 
@@ -612,7 +671,7 @@ position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-317, -356)
+position = Vector2(-223.6, 13.4)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_qw2ye")
 
@@ -621,7 +680,7 @@ position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(-295, -346)
+position = Vector2(-201.6, 23.4)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u0weh")
 
@@ -630,7 +689,7 @@ position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
 
 [node name="Points" type="Node2D" parent="."]
-position = Vector2(552, 168)
+position = Vector2(552, 169)
 script = ExtResource("9_hwtl8")
 
 [node name="Node2D4" type="Node2D" parent="Points"]
@@ -644,7 +703,7 @@ position = Vector2(-976, -255)
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D5"]
 
 [node name="Node2D6" type="Node2D" parent="Points"]
-position = Vector2(-579, -89)
+position = Vector2(-575, -85)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D6"]
 
@@ -654,12 +713,12 @@ position = Vector2(-720, 17)
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D7"]
 
 [node name="Node2D8" type="Node2D" parent="Points"]
-position = Vector2(-454, 18)
+position = Vector2(-450, 11)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D8"]
 
 [node name="Node2D9" type="Node2D" parent="Points"]
-position = Vector2(-376, -109)
+position = Vector2(-377, -108)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D9"]
 
@@ -674,12 +733,12 @@ position = Vector2(-316, -257)
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D11"]
 
 [node name="Node2D12" type="Node2D" parent="Points"]
-position = Vector2(-855, -80)
+position = Vector2(-808, 11)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D12"]
 
 [node name="Node2D13" type="Node2D" parent="Points"]
-position = Vector2(-946, -195)
+position = Vector2(-972, -153)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D13"]
 
@@ -704,7 +763,7 @@ position = Vector2(-785, -254)
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D17"]
 
 [node name="Node2D18" type="Node2D" parent="Points"]
-position = Vector2(-965, 1)
+position = Vector2(-875, -96)
 
 [node name="Marker2D" type="Marker2D" parent="Points/Node2D18"]
 
@@ -719,7 +778,7 @@ one_shot = true
 
 [node name="Node2D2" parent="." instance=ExtResource("7_gbm1c")]
 z_as_relative = false
-position = Vector2(-109, -94)
+position = Vector2(-109, -91)
 script = ExtResource("7_dd1hk")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("11_6ivha")]
@@ -738,10 +797,6 @@ volume_db = -12.265
 autoplay = true
 max_distance = 20000.0
 parameters/looping = true
-
-[node name="Jumpscare" type="AudioStreamPlayer2D" parent="Sound"]
-process_mode = 3
-stream = ExtResource("13_0ox8m")
 
 [node name="Late Game Background Music" type="AudioStreamPlayer2D" parent="Sound"]
 process_mode = 3
@@ -762,13 +817,23 @@ max_distance = 200000.0
 [node name="Woosh" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("17_opfrb")
 
-[node name="After Jumpscare" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("18_wsufj")
-
 [node name="Light" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("19_sqhlb")
-volume_db = 24.0
+volume_db = 14.0
 pitch_scale = 135.0
+
+[node name="Heartbeat" type="AudioStreamPlayer2D" parent="Sound"]
+process_priority = 3
+stream = ExtResource("22_hpuku")
+volume_db = 0.34
+autoplay = true
+max_distance = 20000.0
+parameters/looping = true
+
+[node name="Menu" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("23_mxvw5")
+volume_db = 10.43
+pitch_scale = 5.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q0cev")
@@ -864,7 +929,7 @@ text = "100 m"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer2"]
-self_modulate = Color(1, 1, 1, 0.0666665)
+self_modulate = Color(1, 1, 1, 0)
 z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
@@ -898,43 +963,6 @@ scale = Vector2(0.32, 0.32)
 theme_override_font_sizes/font_size = 100
 text = "Teleport"
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="."]
-process_mode = 3
-layer = 11
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
-top_level = true
-visibility_layer = 16
-position = Vector2(597, 369)
-scale = Vector2(94.815, 80.821)
-sprite_frames = SubResource("SpriteFrames_to3qj")
-
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer3/AnimatedSprite2D4"]
-material = SubResource("ShaderMaterial_7rlvi")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer3"]
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -476.0
-offset_top = -316.0
-offset_right = -476.0
-offset_bottom = -316.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.845, 1.845)
-metadata/_edit_use_anchors_ = true
-
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
 z_index = 100
 position = Vector2(184, 177)
@@ -962,7 +990,171 @@ z_index = 100
 position = Vector2(-23, -251)
 sprite_frames = SubResource("SpriteFrames_wj2dd")
 
+[node name="AnimatedSprite2D9" type="StaticBody2D" parent="."]
+position = Vector2(8, 136)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D9"]
+shape = SubResource("RectangleShape2D_5v12f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D9"]
+libraries = {
+"": SubResource("AnimationLibrary_xrxkg")
+}
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D9/Area2D"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_hhcpw")
+
+[node name="AnimatedSprite2D12" type="StaticBody2D" parent="."]
+position = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D12"]
+shape = SubResource("RectangleShape2D_5v12f")
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D12/Area2D"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_hhcpw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D12"]
+libraries = {
+"": SubResource("AnimationLibrary_40n85")
+}
+
+[node name="AnimatedSprite2D10" type="StaticBody2D" parent="."]
+position = Vector2(136, -73)
+rotation = 1.5708
+scale = Vector2(0.745, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D10"]
+shape = SubResource("RectangleShape2D_5v12f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D10"]
+libraries = {
+"": SubResource("AnimationLibrary_hri7i")
+}
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D10/Area2D"]
+position = Vector2(2.98657, 3.05176e-05)
+shape = SubResource("RectangleShape2D_mxvw5")
+
+[node name="AnimatedSprite2D11" type="StaticBody2D" parent="."]
+position = Vector2(-136, -73)
+rotation = 1.5708
+scale = Vector2(0.745, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D11"]
+position = Vector2(0.671143, 0)
+shape = SubResource("RectangleShape2D_5v12f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D11"]
+libraries = {
+"": SubResource("AnimationLibrary_oye8v")
+}
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D11/Area2D"]
+position = Vector2(2.98657, 3.05176e-05)
+shape = SubResource("RectangleShape2D_xrxkg")
+
+[node name="Area Nodes" type="Node2D" parent="."]
+
+[node name="Walls out 1" type="Area2D" parent="Area Nodes"]
+z_index = 1411
+collision_layer = 3
+collision_mask = 3
+priority = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(257.537, -275.207)
+polygon = PackedVector2Array(-739.537, -156.793, -65.5372, -157.793, -67.5372, -103.793, -684.537, -105.793, -687.537, 465.207, -65.537, 464.207, -65.537, 291.207, -5.53699, 291.207, -2.53723, 511.207, -738.537, 517.207)
+
+[node name="Walls out 2" type="Area2D" parent="Area Nodes"]
+z_index = 1146
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls out 2"]
+polygon = PackedVector2Array(190, -380, 193, -337, 301, -337, 303, 61, 251, 65, 255, -272, 208, -272, 208, -287, 143, -289, 144, -380)
+
+[node name="Walls in" type="Area2D" parent="Area Nodes"]
+z_index = 1545
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls in"]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-429, -336, -2, -337, -2, -352, 16, -354, 17, -79, 128, -79, 128, -75, 160, -74, 160, -80, 257, -80, 257, -63, 160, -64, 160, -71, 128, -70, 128, -64, 17, -64, 17, -16, 10, -16, 10, 16, 15, 16, 16, 128, 9, 128, 10, 160, 15, 160, 16, 195, 0, 195, -1, 160, 5, 160, 5, 128, -1, 128, -2, 64, -97, 64, -96, 57, -129, 57, -129, 64, -224, 63, -225, 128, -231, 128, -231, 160, -225, 160, -225, 193, -240, 193, -241, 160, -235, 160, -235, 128, -241, 128, -241, 64, -433, 64, -433, 48, -129, 48, -129, 54, -97, 54, -97, 48, -1, 48, -1, 16, 4, 16, 5, -17, -2, -17, -2, -64, -111, -65, -112, -72, -143, -71, -144, -64, -432, -63, -430, -82, -275, -81, -273, -193, -320, -194, -322, -305, -303, -302, -305, -212, -257, -210, -255, -83, -154, -80, -144, -80, -144, -76, -112, -75, -112, -80, -1, -81, -5, -322, -434, -319)
+
+[node name="Room 1" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 1"]
+polygon = PackedVector2Array(-430, -319, -321, -319, -320, -193, -273, -192, -273, -81, -431, -81)
+
+[node name="Room 2" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 2"]
+polygon = PackedVector2Array(-304, -319, -3, -319, -1, -81, -256, -84, -255, -208, -304, -211)
+
+[node name="Room 3" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 3"]
+polygon = PackedVector2Array(-429, -386, 2, -382, 0, -337, -429, -336)
+
+[node name="Room 4" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 4"]
+polygon = PackedVector2Array(16, -380, 143, -380, 144, -289, 203, -287, 203, -271, 252, -268, 254, -78, 17, -81)
+
+[node name="Room 5" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 5"]
+polygon = PackedVector2Array(-431, -63, -1, -61, -1, 47, -431, 47, -431, 30, -414, 31, -404, 17, -417, -1, -430, -1)
+
+[node name="Room 6" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 6"]
+polygon = PackedVector2Array(13, -64, 272, -64, 272, 16, 191, 18, 191, 191, 17, 189)
+
+[node name="Room 7" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 7"]
+polygon = PackedVector2Array(-222, 66, -2, 66, -29, 70, -40, 83, -34, 92, -24, 97, -10, 91, -9, 74, -2, 66, -2, 191, -157, 189, -158, 172, -180, 172, -180, 190, -224, 191)
+
+[node name="Room 8" type="Area2D" parent="Area Nodes"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 8"]
+polygon = PackedVector2Array(-430, 68, -338, 68, -337, 84, -322, 90, -305, 79, -299, 66, -242, 68, -241, 164, -269, 165, -269, 190, -426, 188)
+
 [connection signal="timeout" from="Timer" to="Node2D2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="Ghost" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Timer3" to="Ghost" method="_on_timer_3_timeout"]
 [connection signal="timeout" from="Timer4" to="Node2D" method="_on_timer_4_timeout"]
+[connection signal="body_entered" from="AnimatedSprite2D9/Area2D" to="Player" method="_on_area_0d_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D12/Area2D" to="Player" method="_on_area_8d_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D10/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D11/Area2D" to="Player" method="_on_area_1d_body_entered"]
+[connection signal="mouse_entered" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area Nodes/Walls out 2" to="Player" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area Nodes/Walls out 2" to="Player" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area Nodes/Walls in" to="Player" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area Nodes/Walls in" to="Player" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 1" to="Player" method="_on_room_1_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 1" to="Player" method="_on_room_1_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 2" to="Player" method="_on_room_2_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 2" to="Player" method="_on_room_2_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 3" to="Player" method="_on_room_3_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 3" to="Player" method="_on_room_3_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 4" to="Player" method="_on_room_4_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 4" to="Player" method="_on_room_4_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 5" to="Player" method="_on_room_5_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 5" to="Player" method="_on_room_5_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 6" to="Player" method="_on_room_6_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 6" to="Player" method="_on_room_6_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 7" to="Player" method="_on_room_7_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 7" to="Player" method="_on_room_7_body_exited"]
+[connection signal="body_entered" from="Area Nodes/Room 8" to="Player" method="_on_room_8_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Room 8" to="Player" method="_on_room_8_body_exited"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7tnh5dl1ip0g"]
 
-[ext_resource type="Script" path="res://dash_cursor.gd" id="1_bp2ir"]
+[ext_resource type="Script" uid="uid://seilm6eaer3v" path="res://dash_cursor.gd" id="1_bp2ir"]
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_m0rww"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_25l0u"]
 
@@ -19,15 +19,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["cursor"]]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_bp2ir")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["cursor"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c3hgo")
 
-[node name="PointLight2D" type="PointLight2D" parent="." groups=["cursor"]]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-2, -1)
 energy = 0.54
 texture = ExtResource("2_25l0u")
