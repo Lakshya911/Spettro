@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqo3l00jm038p"]
+[gd_scene load_steps=13 format=3 uid="uid://bqo3l00jm038p"]
 
 [ext_resource type="Script" uid="uid://chm06yo3dyiua" path="res://ded.gd" id="1_6csmr"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="1_qwbs2"]
+[ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="2_bfrit"]
 [ext_resource type="AudioStream" uid="uid://s0wwbl48uyw" path="res://horror-rumble-winds-253834.mp3" id="2_oqbmv"]
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="3_qdbot"]
 [ext_resource type="AudioStream" uid="uid://cevd5jlcj8bii" path="res://scary-scream-3-81274.mp3" id="4_tqm1i"]
 
 [sub_resource type="Theme" id="Theme_t5268"]
-default_font_size = 100
+default_font = ExtResource("2_bfrit")
+default_font_size = 80
 
 [sub_resource type="GDScript" id="GDScript_3ttau"]
 script/source = "extends RichTextLabel
@@ -116,16 +118,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -676.0
+offset_left = -685.0
 offset_top = -355.0
-offset_right = 926.0
+offset_right = 1039.0
 offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.17, 0.17)
 pivot_offset = Vector2(0, -19.73)
 theme = SubResource("Theme_t5268")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "[color=red][b][u]You got Scared to Death[/u][/b][/color]"
 fit_content = true
@@ -151,6 +153,7 @@ grow_vertical = 2
 scale = Vector2(0.085, 0.085)
 pivot_offset = Vector2(0, 49.63)
 theme = SubResource("Theme_t5268")
+theme_override_fonts/normal_font = ExtResource("2_bfrit")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=red][b][u]Press Esc[/u][/b][/color]"

@@ -1,8 +1,4 @@
 extends CanvasLayer
-var act : String;
-func _action(act):
-	InputMap.action_erase_events(act)
-	InputMap.action_add_event(act, InputEventKey.new())
 func _ready() -> void:
 	$Main.visible = true
 	$Settings.visible = false
@@ -40,8 +36,8 @@ func _on_button_5_pressed() -> void:
 	$Inventory.visible = true
 
 func _on_button_6_pressed() -> void:
-	_action("w")
-	$Settings/Button6.text = str(InputMap.action_get_events("w"))
+	pass
+
 
 func _physics_process(delta: float) -> void:
 	if $Inventory.visible == true:

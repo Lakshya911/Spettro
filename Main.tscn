@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cbyyvhqym4dhx"]
+[gd_scene load_steps=98 format=3 uid="uid://cbyyvhqym4dhx"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_dfkgm"]
 [ext_resource type="PackedScene" uid="uid://sukhyb6cw132" path="res://MainCharecter.tscn" id="2_u5xgl"]
@@ -18,15 +18,37 @@
 [ext_resource type="PackedScene" uid="uid://dqkdd2cjrsd62" path="res://DIstanceFinder.tscn" id="17_0honw"]
 [ext_resource type="AudioStream" uid="uid://bac2xwrg7s8ug" path="res://woosh-building-109596.mp3" id="17_opfrb"]
 [ext_resource type="AudioStream" uid="uid://cs6hgjn3outd4" path="res://light-switch-off-86314.mp3" id="19_sqhlb"]
-[ext_resource type="Shader" path="res://Main.gdshader" id="20_bcf2x"]
-[ext_resource type="Shader" path="res://Main11.gdshader" id="21_je3iy"]
+[ext_resource type="Shader" uid="uid://dw7h3o0w478e2" path="res://Main.gdshader" id="20_bcf2x"]
+[ext_resource type="Shader" uid="uid://cuo4dfhi2h4bq" path="res://Main11.gdshader" id="21_je3iy"]
 [ext_resource type="AudioStream" uid="uid://brp2rthxviyq" path="res://heartbeat-01-brvhrtz-225058.mp3" id="22_hpuku"]
 [ext_resource type="PackedScene" uid="uid://c7tnh5dl1ip0g" path="res://DashCursor.tscn" id="23_jdyxd"]
 [ext_resource type="AudioStream" uid="uid://c6whga5vl5xd0" path="res://menu-selection-102220.mp3" id="23_mxvw5"]
+[ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="24_hhcpw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1e7kw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7i6v"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_37ekb"]
+polygon = PackedVector2Array(6.53584, -5.90588, 6.69333, 6.53584, -6.69333, 6.69333, -6.69333, -5.90588)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2jlrn"]
+polygon = PackedVector2Array(-3.01662, -3.99877, 2.31508, -4.13908, 8, -4.13908, 8, -1.89415, 8, -0.491077, 8, 1.89415, 8, 3.99877, 2.736, 4.27939, -0.912, 4.13908, -3.85846, 4.13908, -8, 3.85846, -8, -4.13908)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w3mvj"]
+polygon = PackedVector2Array(-2.87716, -5.25827, 2.67874, -4.86142, 5.54216, -3.57785, 6.80493, -0.912001, 6.66462, 1.75385, 4.98093, 4.84062, 1.89416, 6.80493, -1.05231, 6.80493, -4.27939, 5.68246, -5.96308, 2.59569, -5.96308, -2.17477)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3mout"]
+polygon = PackedVector2Array(-5.0625, -6.9375, 3.81968, -7.0937, 5.3125, 8, -5.21491, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xw0gq"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jib3j"]
+polygon = PackedVector2Array(-5.0625, -6.9375, 3.81968, -7.0937, 5.3125, 8, -5.21491, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j1c8f"]
+polygon = PackedVector2Array(6.53584, -5.90588, 6.69333, 6.53584, -6.69333, 6.69333, -6.69333, -5.90588)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_euudi"]
 texture = ExtResource("1_dfkgm")
@@ -41,22 +63,29 @@ texture = ExtResource("1_dfkgm")
 8:0/0 = 0
 9:0/0 = 0
 10:0/0 = 0
+10:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_37ekb")
 10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.9375, -6.1875, 6.84878, -5.95788, 6.79606, 6.89527, -6.99449, 7.19291)
 11:0/0 = 0
 12:0/0 = 0
+12:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2jlrn")
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.97748, 8, -3.97748, 8, 3.97748, -8, 3.97748)
 13:0/0 = 0
+13:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_w3mvj")
 13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.09359, -4.86136, 2.91682, -4.86136, 5.40107, -3.28519, 6.96014, -0.612493, 6.84878, 1.94884, 4.95562, 4.95562, 1.94884, 6.84878, -0.946579, 7.07151, -4.62154, 5.6238, -5.84652, 2.50565, -5.73516, -1.83748)
 14:0/0 = 0
+14:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_3mout")
 14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.95562, -6.84878, 3.73064, -6.96014, 4.84426, 2.28293, 5.06699, 6.84878, 2.61701, 8, -5.06699, 8)
 15:0/0 = 0
+15:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_jib3j")
 15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.03293, -8, 2.20971, -8, 2.20971, 8, -2.20971, 8)
 15:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 0:1/0 = 0
 14:1/0 = 0
+14:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_xw0gq")
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 15:1/0 = 0
+15:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_j1c8f")
 15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.85616, 8, -2.03293, 8, 0.972272, -8, 0.972272)
 15:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 5:1/0 = 0
@@ -92,6 +121,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.495726, 0.495726, 0.495726, 1)
 gradient = SubResource("Gradient_wlk8q")
 
 [sub_resource type="Curve" id="Curve_qva8y"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -239,8 +269,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rihvm"]
 _data = {
-"RESET": SubResource("Animation_owvi4"),
-"new_animation": SubResource("Animation_hne2h")
+&"RESET": SubResource("Animation_owvi4"),
+&"new_animation": SubResource("Animation_hne2h")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4lj7y"]
@@ -264,7 +294,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8oc3n"]
 _data = {
-"KILL": SubResource("Animation_2de8f")
+&"KILL": SubResource("Animation_2de8f")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ohhf"]
@@ -437,8 +467,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xrxkg"]
 _data = {
-"RESET": SubResource("Animation_mxvw5"),
-"new_animation": SubResource("Animation_hhcpw")
+&"RESET": SubResource("Animation_mxvw5"),
+&"new_animation": SubResource("Animation_hhcpw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhcpw"]
@@ -476,8 +506,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_40n85"]
 _data = {
-"RESET": SubResource("Animation_oye8v"),
-"new_animation": SubResource("Animation_hri7i")
+&"RESET": SubResource("Animation_oye8v"),
+&"new_animation": SubResource("Animation_hri7i")
 }
 
 [sub_resource type="Animation" id="Animation_sqvbp"]
@@ -512,8 +542,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hri7i"]
 _data = {
-"RESET": SubResource("Animation_sqvbp"),
-"new_animation": SubResource("Animation_xrxkg")
+&"RESET": SubResource("Animation_sqvbp"),
+&"new_animation": SubResource("Animation_xrxkg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxvw5"]
@@ -551,12 +581,36 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oye8v"]
 _data = {
-"RESET": SubResource("Animation_5mvff"),
-"new_animation": SubResource("Animation_w3rk5")
+&"RESET": SubResource("Animation_5mvff"),
+&"new_animation": SubResource("Animation_w3rk5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrxkg"]
 size = Vector2(14.0268, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg4s2"]
+size = Vector2(672, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqvbp"]
+size = Vector2(48, 625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hri7i"]
+size = Vector2(688, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3rk5"]
+size = Vector2(64, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mvff"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oye8v"]
+size = Vector2(48, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40n85"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb15f"]
+size = Vector2(64, 96)
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-664.0]
@@ -602,10 +656,10 @@ current = true
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
 position = Vector2(4.2858, 4.28569)
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_abaft")
 lifetime = 2.05
 randomness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_abaft")
 
 [node name="Distance Finder" parent="Player" instance=ExtResource("17_0honw")]
 position = Vector2(-1.42865, -9.99994)
@@ -784,6 +838,7 @@ script = ExtResource("7_dd1hk")
 [node name="CanvasLayer" parent="." instance=ExtResource("11_6ivha")]
 process_mode = 3
 layer = 4
+visible = false
 scale = Vector2(1.23, 1.18)
 transform = Transform2D(1.23, 0, 0, 1.18, 0, 0)
 
@@ -840,6 +895,7 @@ environment = SubResource("Environment_q0cev")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 3
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_a3p05")
@@ -873,13 +929,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -23.0
-offset_top = -17.0
-offset_right = 44.0
-offset_bottom = 5.0
+offset_left = -372.0
+offset_top = -204.0
+offset_right = 435.0
+offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_80skc")
+theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
 text = "You Escaped"
 metadata/_edit_use_anchors_ = true
@@ -890,10 +947,12 @@ material = SubResource("CanvasItemMaterial_3nxck")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 33.0
+offset_left = 5.0
+offset_top = -109.0
+offset_right = 304.0
 grow_vertical = 0
 theme = SubResource("Theme_80skc")
+theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
 text = "hhhh"
 metadata/_edit_use_anchors_ = true
@@ -909,22 +968,26 @@ offset_top = -20.0
 offset_right = 45.0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 70
 text = "+1 Item"
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/Label3"]
 libraries = {
-"": SubResource("AnimationLibrary_rihvm")
+&"": SubResource("AnimationLibrary_rihvm")
 }
 
 [node name="Label4" type="Label" parent="CanvasLayer2"]
 visibility_layer = 524288
 material = SubResource("CanvasItemMaterial_4lj7y")
-offset_right = 49.0
-offset_bottom = 26.0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 374.0
+offset_bottom = 114.0
 scale = Vector2(0.6, 0.6)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("24_hhcpw")
+theme_override_font_sizes/font_size = 60
 text = "100 m"
 metadata/_edit_use_anchors_ = true
 
@@ -939,7 +1002,7 @@ grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/ColorRect3"]
 libraries = {
-"": SubResource("AnimationLibrary_8oc3n")
+&"": SubResource("AnimationLibrary_8oc3n")
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer2"]
@@ -955,11 +1018,12 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="CanvasLayer2/ProgressBar"]
 layout_mode = 0
-offset_left = -139.0
-offset_top = -7.0
-offset_right = 256.0
-offset_bottom = 149.0
+offset_left = -191.0
+offset_top = -1.0
+offset_right = 398.0
+offset_bottom = 155.0
 scale = Vector2(0.32, 0.32)
+theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
 text = "Teleport"
 
@@ -998,7 +1062,7 @@ shape = SubResource("RectangleShape2D_5v12f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D9"]
 libraries = {
-"": SubResource("AnimationLibrary_xrxkg")
+&"": SubResource("AnimationLibrary_xrxkg")
 }
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D9"]
@@ -1021,7 +1085,7 @@ shape = SubResource("RectangleShape2D_hhcpw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D12"]
 libraries = {
-"": SubResource("AnimationLibrary_40n85")
+&"": SubResource("AnimationLibrary_40n85")
 }
 
 [node name="AnimatedSprite2D10" type="StaticBody2D" parent="."]
@@ -1034,7 +1098,7 @@ shape = SubResource("RectangleShape2D_5v12f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D10"]
 libraries = {
-"": SubResource("AnimationLibrary_hri7i")
+&"": SubResource("AnimationLibrary_hri7i")
 }
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D10"]
@@ -1054,7 +1118,7 @@ shape = SubResource("RectangleShape2D_5v12f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D11"]
 libraries = {
-"": SubResource("AnimationLibrary_oye8v")
+&"": SubResource("AnimationLibrary_oye8v")
 }
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D11"]
@@ -1063,23 +1127,48 @@ libraries = {
 position = Vector2(2.98657, 3.05176e-05)
 shape = SubResource("RectangleShape2D_xrxkg")
 
-[node name="Area Nodes" type="Node2D" parent="."]
+[node name="Area Nodes" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Walls out 1" type="Area2D" parent="Area Nodes"]
+top_level = true
 z_index = 1411
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 priority = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls out 1"]
-position = Vector2(257.537, -275.207)
-polygon = PackedVector2Array(-739.537, -156.793, -65.5372, -157.793, -67.5372, -103.793, -684.537, -105.793, -687.537, 465.207, -65.537, 464.207, -65.537, 291.207, -5.53699, 291.207, -2.53723, 511.207, -738.537, 517.207)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(-144, -408)
+shape = SubResource("RectangleShape2D_bg4s2")
 
-[node name="Walls out 2" type="Area2D" parent="Area Nodes"]
-z_index = 1146
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(-456, -71.5)
+shape = SubResource("RectangleShape2D_sqvbp")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls out 2"]
-polygon = PackedVector2Array(190, -380, 193, -337, 301, -337, 303, 61, 251, 65, 255, -272, 208, -272, 208, -287, 143, -289, 144, -380)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(-88, 216)
+shape = SubResource("RectangleShape2D_hri7i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(224, 104)
+shape = SubResource("RectangleShape2D_w3rk5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(280, 40)
+shape = SubResource("RectangleShape2D_5mvff")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(280, -152)
+shape = SubResource("RectangleShape2D_oye8v")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(240, -304)
+shape = SubResource("RectangleShape2D_40n85")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(176, -336)
+shape = SubResource("RectangleShape2D_gb15f")
 
 [node name="Walls in" type="Area2D" parent="Area Nodes"]
 z_index = 1545
@@ -1101,7 +1190,7 @@ polygon = PackedVector2Array(-304, -319, -3, -319, -1, -81, -256, -84, -255, -20
 [node name="Room 3" type="Area2D" parent="Area Nodes"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Room 3"]
-polygon = PackedVector2Array(-429, -386, 2, -382, 0, -337, -429, -336)
+polygon = PackedVector2Array(-431, -383, 2, -382, 0, -337, -429, -336)
 
 [node name="Room 4" type="Area2D" parent="Area Nodes"]
 
@@ -1138,8 +1227,6 @@ polygon = PackedVector2Array(-430, 68, -338, 68, -337, 84, -322, 90, -305, 79, -
 [connection signal="body_entered" from="AnimatedSprite2D11/Area2D" to="Player" method="_on_area_1d_body_entered"]
 [connection signal="mouse_entered" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Area Nodes/Walls out 2" to="Player" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Area Nodes/Walls out 2" to="Player" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Area Nodes/Walls in" to="Player" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area Nodes/Walls in" to="Player" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Area Nodes/Room 1" to="Player" method="_on_room_1_body_entered"]

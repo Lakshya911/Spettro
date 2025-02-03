@@ -70,7 +70,7 @@ func _equip(tx2) -> void:
 	amtkey += tx2
 	$"../Sound/Equip".play()
 func _doshit() -> void:
-	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",35)
+	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",24.5)
 	_showtext("You need to find the 3 keys and all 5 nuke parts and go to the Yellow area on the map and put all these together to make the nuke..")
 	get_tree().paused = true
 	await get_tree().create_timer(5).timeout
@@ -98,12 +98,12 @@ func setfalse():
 #endregion
 #region Other Functions
 func _ready():
-	$"../Sound/Heartbeat".stream_paused = true
-	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$"../CanvasLayer2/Label".text = ""
 	$"../CanvasLayer2/Label2".text = ""
 	$"../CanvasLayer2/Label3".text = ""
 	$"../CanvasLayer2/Label4".text = ""
+	$"../Sound/Heartbeat".stream_paused = true
 	preload("res://Ded.tscn")
 	#Distance b/w player and keys
 	$"../CanvasLayer".visible = false
@@ -209,8 +209,10 @@ func _physics_process(delta):
 			$"../Sound/Equip".play()
 			await get_tree().create_timer(2).timeout
 			get_tree().paused = true
-			_showtext("You can use this to find distance b/w you and the keys")
+			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",35)
+			_showtext("You can use this to find distance between you and the keys")
 			await get_tree().create_timer(4).timeout
+			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",70)
 			_doshit() #Yes
 #endregion
 #region Other Inputs
@@ -230,8 +232,7 @@ func _physics_process(delta):
 		$"../CanvasLayer".visible = false
 		get_tree().paused = false
 	else:
-		#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-		pass
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if dashavail == true:
 		$"../CanvasLayer2/ProgressBar".value = 1
 	elif dashavail == false:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dke53oods4r1x"]
+[gd_scene load_steps=15 format=3 uid="uid://dke53oods4r1x"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_y6q1q"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_qvsky"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://0jkbbnklkkx7" path="res://Button2.gd" id="5_o7etc"]
 [ext_resource type="AudioStream" uid="uid://bgln22csrhouk" path="res://horror-background-atmosphere-for-scary-scenes-179446.mp3" id="6_j2pxw"]
 [ext_resource type="AudioStream" uid="uid://c6whga5vl5xd0" path="res://menu-selection-102220.mp3" id="6_ptakq"]
-[ext_resource type="Shader" path="res://Start Screen.gdshader" id="8_ye74n"]
+[ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="7_jmc6m"]
+[ext_resource type="Shader" uid="uid://xroiiln2hydm" path="res://Start Screen.gdshader" id="8_ye74n"]
 
 [sub_resource type="GDScript" id="GDScript_c1udk"]
 script/source = "extends Node2D
@@ -220,12 +221,13 @@ size_flags_horizontal = 3
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 89.32
+offset_left = 144.32
 offset_top = -16.68
-offset_right = 325.32
+offset_right = 519.32
 offset_bottom = 148.32
 grow_vertical = 2
 scale = Vector2(0.445, 0.445)
+theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 100
 text = "Start
 "
@@ -236,12 +238,13 @@ script = ExtResource("4_sujtd")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 95.0
+offset_left = 155.0
 offset_top = -252.0
-offset_right = 309.0
+offset_right = 458.0
 offset_bottom = -87.0
 grow_vertical = 0
 scale = Vector2(0.445, 0.445)
+theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 100
 text = "Quit
 "
@@ -249,21 +252,23 @@ flat = true
 script = ExtResource("5_o7etc")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
 offset_top = 187.65
-offset_right = 717.0
+offset_right = 1046.0
 offset_bottom = 507.65
 scale = Vector2(0.43, 0.43)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 200
 text = "Spettro"
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
-offset_left = 8.0
+offset_left = 13.0
 offset_top = 190.0
-offset_right = 326.0
+offset_right = 331.0
 offset_bottom = 305.0
 uri = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
