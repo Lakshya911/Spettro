@@ -675,13 +675,11 @@ collision_mask = 7
 platform_wall_layers = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(-30, 40)
 color = Color(0, 0, 0, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_rro1y")]
 layer = 0
-visible = false
 offset = Vector2(-479.86, -415.66)
 scale = Vector2(1.195, 1.79)
 transform = Transform2D(1.195, 0, 0, 1.79, -479.86, -415.66)
@@ -837,8 +835,7 @@ script = ExtResource("7_dd1hk")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("11_6ivha")]
 process_mode = 3
-layer = 4
-visible = false
+layer = 5
 scale = Vector2(1.23, 1.18)
 transform = Transform2D(1.23, 0, 0, 1.18, 0, 0)
 
@@ -894,8 +891,7 @@ pitch_scale = 5.8
 environment = SubResource("Environment_q0cev")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
-layer = 3
-visible = false
+layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_a3p05")
@@ -910,7 +906,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_js6ms")
@@ -919,7 +916,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
 visibility_layer = 524288
@@ -935,6 +933,7 @@ offset_right = 435.0
 offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_force_pass_scroll_events = false
 theme = SubResource("Theme_80skc")
 theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
@@ -951,6 +950,7 @@ offset_left = 5.0
 offset_top = -109.0
 offset_right = 304.0
 grow_vertical = 0
+mouse_force_pass_scroll_events = false
 theme = SubResource("Theme_80skc")
 theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
@@ -968,6 +968,7 @@ offset_top = -20.0
 offset_right = 45.0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
+mouse_force_pass_scroll_events = false
 theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 70
 text = "+1 Item"
@@ -999,6 +1000,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/ColorRect3"]
 libraries = {
@@ -1013,6 +1016,8 @@ offset_left = -200.0
 offset_top = 3.0
 offset_bottom = 33.0
 grow_horizontal = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 max_value = 1.0
 show_percentage = false
 
@@ -1023,6 +1028,7 @@ offset_top = -1.0
 offset_right = 398.0
 offset_bottom = 155.0
 scale = Vector2(0.32, 0.32)
+mouse_force_pass_scroll_events = false
 theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
 text = "Teleport"
