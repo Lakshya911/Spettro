@@ -675,13 +675,11 @@ collision_mask = 7
 platform_wall_layers = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(-30, 40)
 color = Color(0, 0, 0, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_rro1y")]
 layer = 0
-visible = false
 offset = Vector2(-479.86, -415.66)
 scale = Vector2(1.195, 1.79)
 transform = Transform2D(1.195, 0, 0, 1.79, -479.86, -415.66)
@@ -838,7 +836,6 @@ script = ExtResource("7_dd1hk")
 [node name="CanvasLayer" parent="." instance=ExtResource("11_6ivha")]
 process_mode = 3
 layer = 4
-visible = false
 scale = Vector2(1.23, 1.18)
 transform = Transform2D(1.23, 0, 0, 1.18, 0, 0)
 
@@ -895,7 +892,6 @@ environment = SubResource("Environment_q0cev")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_a3p05")
@@ -910,6 +906,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
@@ -919,6 +916,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
@@ -999,6 +997,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/ColorRect3"]
 libraries = {
@@ -1013,6 +1012,7 @@ offset_left = -200.0
 offset_top = 3.0
 offset_bottom = 33.0
 grow_horizontal = 0
+mouse_filter = 2
 max_value = 1.0
 show_percentage = false
 

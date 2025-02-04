@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dke53oods4r1x"]
+[gd_scene load_steps=17 format=3 uid="uid://dke53oods4r1x"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_y6q1q"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_qvsky"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c6whga5vl5xd0" path="res://menu-selection-102220.mp3" id="6_ptakq"]
 [ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="7_jmc6m"]
 [ext_resource type="Shader" uid="uid://xroiiln2hydm" path="res://Start Screen.gdshader" id="8_ye74n"]
+[ext_resource type="Shader" uid="uid://cuo4dfhi2h4bq" path="res://Main11.gdshader" id="10_4ql4d"]
 
 [sub_resource type="GDScript" id="GDScript_c1udk"]
 script/source = "extends Node2D
@@ -72,10 +73,15 @@ sources/0 = SubResource("TileSetAtlasSource_vkhi0")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmamk"]
+shader = ExtResource("10_4ql4d")
+shader_parameter/outerRadius = 1.565
+shader_parameter/MainAlpha = 0.39
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmc6m"]
 shader = ExtResource("8_ye74n")
 shader_parameter/blur_amount = 2.481
-shader_parameter/mix_amount = 0.0
+shader_parameter/mix_amount = 0.115
 shader_parameter/color_over = null
 
 [node name="Node2D" type="Node2D"]
@@ -208,6 +214,17 @@ pitch_scale = 5.8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+z_index = 13
+material = SubResource("ShaderMaterial_tmamk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_jmc6m")
 anchors_preset = 15
@@ -227,6 +244,7 @@ offset_right = 519.32
 offset_bottom = 148.32
 grow_vertical = 2
 scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 100
 text = "Start
@@ -244,6 +262,7 @@ offset_right = 458.0
 offset_bottom = -87.0
 grow_vertical = 0
 scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 100
 text = "Quit
@@ -267,9 +286,9 @@ text = "Spettro"
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
 offset_left = 13.0
-offset_top = 190.0
-offset_right = 331.0
-offset_bottom = 305.0
+offset_top = 165.0
+offset_right = 475.0
+offset_bottom = 292.0
 uri = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 [connection signal="mouse_entered" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_mouse_entered"]
