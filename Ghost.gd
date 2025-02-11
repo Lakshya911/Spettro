@@ -4,7 +4,7 @@ var rg = RandomNumberGenerator.new()
 var y = 0
 var x1 = 1
 var y1 = 10
-var o1 = 26
+var o1 = 33
 var o2= 18
 
 func _ready():

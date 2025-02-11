@@ -2,7 +2,7 @@ extends Control
 var rg = RandomNumberGenerator.new()
 func _ready() -> void:
 	$Jumpscare.pitch_scale = rg.randfn(-6.24,2.6)
-
+	$CanvasLayer3/ColorRect3/AnimationPlayer.play("new_animation")
 
 
 func _on_jumpscare_finished() -> void:

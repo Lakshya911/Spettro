@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cbyyvhqym4dhx"]
+[gd_scene load_steps=107 format=3 uid="uid://cbyyvhqym4dhx"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_dfkgm"]
 [ext_resource type="PackedScene" uid="uid://sukhyb6cw132" path="res://MainCharecter.tscn" id="2_u5xgl"]
@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://ckgy8pku4rfaf" path="res://Nuke.gd" id="8_kl37i"]
 [ext_resource type="Script" uid="uid://c287qv3rsqttu" path="res://Points.gd" id="9_hwtl8"]
 [ext_resource type="PackedScene" uid="uid://nbd1muqwflxc" path="res://SettingsUI.tscn" id="11_6ivha"]
-[ext_resource type="AudioStream" uid="uid://bgln22csrhouk" path="res://horror-background-atmosphere-for-scary-scenes-179446.mp3" id="12_6q722"]
 [ext_resource type="AudioStream" uid="uid://dua18vfulnnax" path="res://item-equip-6904.mp3" id="14_dh0fc"]
+[ext_resource type="AudioStream" uid="uid://bmg5m3oqgy4qo" path="res://horror-ambient-14590.mp3" id="14_hhcpw"]
 [ext_resource type="AudioStream" uid="uid://h1sh5bl1r0tc" path="res://intense-horror-music-01-14890.mp3" id="15_q544v"]
 [ext_resource type="AudioStream" uid="uid://cr2brsupk5hou" path="res://explosion-47821.mp3" id="16_e8kri"]
 [ext_resource type="PackedScene" uid="uid://dqkdd2cjrsd62" path="res://DIstanceFinder.tscn" id="17_0honw"]
@@ -212,13 +212,17 @@ animations = [{
 background_mode = 3
 tonemap_mode = 2
 ssao_radius = 19.8
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 116.1
+glow_map_strength = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3p05"]
 shader = ExtResource("20_bcf2x")
-shader_parameter/fog_density = 0.135
-shader_parameter/fog_speed = 0.225
-shader_parameter/noise_scale = 4.0
-shader_parameter/fog_opacity = 0.5
+shader_parameter/fog_density = 0.1
+shader_parameter/fog_speed = 0.416
+shader_parameter/noise_scale = 1.0
+shader_parameter/fog_opacity = 0.475
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_js6ms"]
 shader = ExtResource("21_je3iy")
@@ -296,6 +300,75 @@ tracks/0/keys = {
 _data = {
 &"KILL": SubResource("Animation_2de8f")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oye8v"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mvff"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3rk5"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hri7i"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqvbp"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrxkg"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxvw5"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhcpw"]
+atlas = ExtResource("1_dfkgm")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40n85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oye8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mvff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3rk5")
+}],
+"loop": true,
+"name": &"Keys",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hri7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqvbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrxkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxvw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhcpw")
+}],
+"loop": true,
+"name": &"Nuke parts",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ohhf"]
 atlas = ExtResource("1_dfkgm")
@@ -591,9 +664,6 @@ size = Vector2(14.0268, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg4s2"]
 size = Vector2(672, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqvbp"]
-size = Vector2(48, 625)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hri7i"]
 size = Vector2(688, 48)
 
@@ -612,8 +682,11 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gb15f"]
 size = Vector2(64, 96)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqvbp"]
+size = Vector2(48, 624)
+
 [node name="Node2D" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [-664.0]
+metadata/_edit_horizontal_guides_ = [-4.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fxvpj")
@@ -714,7 +787,7 @@ wait_time = 3.5
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-215.6, 31.4)
+position = Vector2(-297, 83)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_thp5u")
 
@@ -722,8 +795,14 @@ sprite_frames = SubResource("SpriteFrames_thp5u")
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
 
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+color = Color(0.313726, 0.231373, 0.192157, 1)
+energy = 2.14
+texture = ExtResource("3_7f42c")
+texture_scale = 0.05
+
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-223.6, 13.4)
+position = Vector2(-218, -136)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_qw2ye")
 
@@ -731,14 +810,26 @@ sprite_frames = SubResource("SpriteFrames_qw2ye")
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
 
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D2"]
+color = Color(0.160784, 0.121569, 0.101961, 1)
+energy = 1.39
+texture = ExtResource("3_7f42c")
+texture_scale = 0.05
+
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(-201.6, 23.4)
+position = Vector2(-296, 13)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u0weh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D3"]
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_utegr")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D3"]
+color = Color(0.580392, 0.105882, 0.12549, 1)
+energy = 2.14
+texture = ExtResource("3_7f42c")
+texture_scale = 0.05
 
 [node name="Points" type="Node2D" parent="."]
 position = Vector2(552, 169)
@@ -844,8 +935,8 @@ process_mode = 3
 
 [node name="Background Music" type="AudioStreamPlayer2D" parent="Sound"]
 process_mode = 3
-stream = ExtResource("12_6q722")
-volume_db = -12.265
+stream = ExtResource("14_hhcpw")
+volume_db = -9.379
 autoplay = true
 max_distance = 20000.0
 parameters/looping = true
@@ -898,16 +989,11 @@ material = SubResource("ShaderMaterial_a3p05")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -13.0
-offset_right = -24.0
-offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_js6ms")
@@ -917,7 +1003,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
 visibility_layer = 524288
@@ -986,7 +1071,7 @@ offset_bottom = 114.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 60
-text = "100 m"
+text = "Distance  :100m"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer2"]
@@ -997,6 +1082,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/ColorRect3"]
@@ -1027,32 +1113,64 @@ theme_override_fonts/font = ExtResource("24_hhcpw")
 theme_override_font_sizes/font_size = 100
 text = "Teleport"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2"]
+position = Vector2(244, 29)
+scale = Vector2(3.68, 3.68)
+sprite_frames = SubResource("SpriteFrames_40n85")
+animation = &"Nuke parts"
+
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
 z_index = 100
-position = Vector2(184, 177)
+position = Vector2(140, 126)
 sprite_frames = SubResource("SpriteFrames_vireh")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D8"]
+position = Vector2(1, 1)
+energy = 0.93
+texture = ExtResource("3_7f42c")
+texture_scale = 0.02
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
 z_index = 100
 position = Vector2(250, 8)
 sprite_frames = SubResource("SpriteFrames_32yie")
 
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D7"]
+energy = 0.93
+texture = ExtResource("3_7f42c")
+texture_scale = 0.02
+
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
 top_level = true
 z_index = 100
 z_as_relative = false
-position = Vector2(-305, -348)
+position = Vector2(-264, -348)
 sprite_frames = SubResource("SpriteFrames_idixt")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D6"]
+energy = 0.93
+texture = ExtResource("3_7f42c")
+texture_scale = 0.02
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
 z_index = 100
 position = Vector2(249, -261)
 sprite_frames = SubResource("SpriteFrames_pbfsq")
 
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D5"]
+energy = 0.93
+texture = ExtResource("3_7f42c")
+texture_scale = 0.02
+
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
 z_index = 100
 position = Vector2(-23, -251)
 sprite_frames = SubResource("SpriteFrames_wj2dd")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D4"]
+energy = 0.93
+texture = ExtResource("3_7f42c")
+texture_scale = 0.02
 
 [node name="AnimatedSprite2D9" type="StaticBody2D" parent="."]
 position = Vector2(8, 136)
@@ -1071,6 +1189,10 @@ libraries = {
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_hhcpw")
 
+[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D9"]
+color = Color(0.356863, 0.301961, 0.282353, 1)
+polygon = PackedVector2Array(-2, 8, 2, 8, 2, -8, -2, -8)
+
 [node name="AnimatedSprite2D12" type="StaticBody2D" parent="."]
 position = Vector2(8, 8)
 
@@ -1087,6 +1209,10 @@ shape = SubResource("RectangleShape2D_hhcpw")
 libraries = {
 &"": SubResource("AnimationLibrary_40n85")
 }
+
+[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D12"]
+color = Color(0.356863, 0.301961, 0.282353, 1)
+polygon = PackedVector2Array(-2, -8, -2, 8, 2, 8, 2, -8)
 
 [node name="AnimatedSprite2D10" type="StaticBody2D" parent="."]
 position = Vector2(136, -73)
@@ -1106,6 +1232,10 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D10/Area2D"]
 position = Vector2(2.98657, 3.05176e-05)
 shape = SubResource("RectangleShape2D_mxvw5")
+
+[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D10"]
+color = Color(0.356863, 0.301961, 0.282353, 1)
+polygon = PackedVector2Array(-1.34232, -7.99998, 2.68452, -8, 2.6846, 7, -1.34225, 7.00002)
 
 [node name="AnimatedSprite2D11" type="StaticBody2D" parent="."]
 position = Vector2(-136, -73)
@@ -1127,6 +1257,13 @@ libraries = {
 position = Vector2(2.98657, 3.05176e-05)
 shape = SubResource("RectangleShape2D_xrxkg")
 
+[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D11"]
+position = Vector2(280.536, -143.001)
+rotation = -1.5708
+scale = Vector2(1, 1.34228)
+color = Color(0.356863, 0.301961, 0.282353, 1)
+polygon = PackedVector2Array(-135, -210, -135, -207, -151, -207, -151, -210)
+
 [node name="Area Nodes" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -1141,10 +1278,6 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
 position = Vector2(-144, -408)
 shape = SubResource("RectangleShape2D_bg4s2")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
-position = Vector2(-456, -71.5)
-shape = SubResource("RectangleShape2D_sqvbp")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
 position = Vector2(-88, 216)
@@ -1170,12 +1303,16 @@ shape = SubResource("RectangleShape2D_40n85")
 position = Vector2(176, -336)
 shape = SubResource("RectangleShape2D_gb15f")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Nodes/Walls out 1"]
+position = Vector2(-456, -72)
+shape = SubResource("RectangleShape2D_sqvbp")
+
 [node name="Walls in" type="Area2D" parent="Area Nodes"]
 z_index = 1545
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Nodes/Walls in"]
 position = Vector2(1, 0)
-polygon = PackedVector2Array(-429, -336, -2, -337, -2, -352, 16, -354, 17, -79, 128, -79, 128, -75, 160, -74, 160, -80, 257, -80, 257, -63, 160, -64, 160, -71, 128, -70, 128, -64, 17, -64, 17, -16, 10, -16, 10, 16, 15, 16, 16, 128, 9, 128, 10, 160, 15, 160, 16, 195, 0, 195, -1, 160, 5, 160, 5, 128, -1, 128, -2, 64, -97, 64, -96, 57, -129, 57, -129, 64, -224, 63, -225, 128, -231, 128, -231, 160, -225, 160, -225, 193, -240, 193, -241, 160, -235, 160, -235, 128, -241, 128, -241, 64, -433, 64, -433, 48, -129, 48, -129, 54, -97, 54, -97, 48, -1, 48, -1, 16, 4, 16, 5, -17, -2, -17, -2, -64, -111, -65, -112, -72, -143, -71, -144, -64, -432, -63, -430, -82, -275, -81, -273, -193, -320, -194, -322, -305, -303, -302, -305, -212, -257, -210, -255, -83, -154, -80, -144, -80, -144, -76, -112, -75, -112, -80, -1, -81, -5, -322, -434, -319)
+polygon = PackedVector2Array(-429, -336, -2, -337, -2, -352, 16, -354, 17, -79, 128, -79, 128, -90, 160, -90, 160, -80, 257, -80, 257, -63, 160, -64, 160, -54, 128, -55, 128, -64, 17, -64, 17, -16, 27, -15, 29, 12, 15, 16, 16, 128, 30, 127, 30, 159, 15, 160, 16, 195, 0, 195, -1, 160, -18, 160, -19, 130, -1, 128, -2, 64, -97, 64, -129, 64, -224, 63, -225, 128, -231, 128, -231, 160, -225, 160, -225, 193, -240, 193, -241, 160, -235, 160, -235, 128, -241, 128, -241, 64, -433, 64, -433, 48, -129, 48, -97, 48, -1, 48, -1, 16, -12, 14, -12, -16, -2, -17, -2, -64, -111, -65, -111, -55, -144, -55, -144, -64, -432, -63, -430, -82, -275, -81, -273, -193, -320, -194, -322, -305, -303, -302, -305, -212, -257, -210, -255, -83, -154, -80, -144, -80, -144, -91, -112, -91, -112, -80, -1, -81, -5, -322, -434, -319)
 
 [node name="Room 1" type="Area2D" parent="Area Nodes"]
 
@@ -1225,8 +1362,12 @@ polygon = PackedVector2Array(-430, 68, -338, 68, -337, 84, -322, 90, -305, 79, -
 [connection signal="body_entered" from="AnimatedSprite2D12/Area2D" to="Player" method="_on_area_8d_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite2D10/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite2D11/Area2D" to="Player" method="_on_area_1d_body_entered"]
+[connection signal="body_entered" from="Area Nodes/Walls out 1" to="Player" method="_on_walls_out_1_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Walls out 1" to="Player" method="_on_walls_out_1_body_exited"]
 [connection signal="mouse_entered" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area Nodes/Walls out 1" to="Player" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Area Nodes/Walls in" to="Player" method="_on_walls_out_1_body_entered"]
+[connection signal="body_exited" from="Area Nodes/Walls in" to="Player" method="_on_walls_out_1_body_exited"]
 [connection signal="mouse_entered" from="Area Nodes/Walls in" to="Player" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area Nodes/Walls in" to="Player" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Area Nodes/Room 1" to="Player" method="_on_room_1_body_entered"]

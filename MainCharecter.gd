@@ -69,22 +69,6 @@ func _do_distance_calc() -> void:
 func _equip(tx2) -> void:
 	amtkey += tx2
 	$"../Sound/Equip".play()
-func _doshit() -> void:
-	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",24.5)
-	_showtext("You need to find the 3 keys and all 5 nuke parts and go to the Yellow area on the map and put all these together to make the nuke..")
-	get_tree().paused = true
-	await get_tree().create_timer(5).timeout
-	_showtext("To find the map press Escape")
-	get_tree().paused = false
-	await get_tree().create_timer(2).timeout
-	_showtext("Press LMB/Left Mouse Button to teleport")
-	await get_tree().create_timer(2).timeout
-	_showtext("You will only be able to teleport within a limited zone, You can use this to get away from Spettro")
-	await get_tree().create_timer(2.420).timeout
-	_showtext("You can also get stuck to walls..")
-	await get_tree().create_timer(2.69).timeout
-	_showtext("Good Luck")
-	$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",70)
 func setfalse():
 	await get_tree().process_frame
 	r1 = false
@@ -98,6 +82,11 @@ func setfalse():
 #endregion
 #region Other Functions
 func _ready():
+	$"../CanvasLayer2/AnimatedSprite2D".hide()
+	$"../AnimatedSprite2D9/AnimationPlayer".play("RESET")
+	$"../AnimatedSprite2D12/AnimationPlayer".play("RESET")
+	$"../AnimatedSprite2D10/AnimationPlayer".play("RESET")
+	$"../AnimatedSprite2D11/AnimationPlayer".play("RESET")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$"../CanvasLayer2/Label".text = ""
 	$"../CanvasLayer2/Label2".text = ""
@@ -203,6 +192,7 @@ func _physics_process(delta):
 			$"../AnimatedSprite2D4".position = Vector2(493,367)
 		if $"Distance Finder".visible == true:
 			pb = true
+			$"../CanvasLayer2/AnimatedSprite2D".show()
 			_showtext("Equipped Distance Finder")
 			$"Distance Finder".hide()
 			d41 = true
@@ -212,8 +202,9 @@ func _physics_process(delta):
 			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",35)
 			_showtext("You can use this to find distance between you and the keys")
 			await get_tree().create_timer(4).timeout
+			_showtext("")
 			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",70)
-			_doshit() #Yes
+			get_tree().paused = false
 #endregion
 #region Other Inputs
 	if amtkey > 8:
@@ -242,23 +233,47 @@ func _physics_process(delta):
 #endregion
 #region Text
 	if d41 == true:
-		$"../CanvasLayer2/Label4".text = "Distance: " + str(int(g40)) + "m"
+		$"../CanvasLayer2/Label4".text = "Distance  :" + str(int(g40)) + "m"
 		if node1 == true:
 			g40 = d1
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Keys")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(0)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(3.68,3.68)
 		elif node2 == true:
 			g40 = d2
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Keys")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(1)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(3.68,3.68)
 		elif node3 == true:
 			g40 = d3
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Keys")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(2)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(3.68,3.68)
 		elif node4 == true:
 			g40 = n1
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(0)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		elif node5 == true:
 			g40 = n2
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(1)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		elif node6 == true:
 			g40 = n3
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(2)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		elif node7 == true:
 			g40 = n4
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(3)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		elif node8 == true:
 			g40 = n5
+			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
+			$"../CanvasLayer2/AnimatedSprite2D".set_frame(4)
+			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		else:
 			$"../CanvasLayer2/Label4".text = "Error 404!"
 #endregion

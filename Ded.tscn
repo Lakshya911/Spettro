@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqo3l00jm038p"]
+[gd_scene load_steps=16 format=3 uid="uid://bqo3l00jm038p"]
 
 [ext_resource type="Script" uid="uid://chm06yo3dyiua" path="res://ded.gd" id="1_6csmr"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="1_qwbs2"]
@@ -99,6 +99,66 @@ shader_parameter/noiseIntensity = -0.35
 shader_parameter/offsetIntensity = 0.1
 shader_parameter/colorOffsetIntensity = 5.0
 
+[sub_resource type="Animation" id="Animation_arjqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D4:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_bfrit"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D4:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(95, 81)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1vvg"]
+_data = {
+&"RESET": SubResource("Animation_arjqy"),
+&"new_animation": SubResource("Animation_bfrit")
+}
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -118,9 +178,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -685.0
+offset_left = -684.0
 offset_top = -355.0
-offset_right = 1039.0
+offset_right = 1040.0
 offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -291,8 +351,8 @@ layer = 11
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer3"]
 top_level = true
 visibility_layer = 16
-position = Vector2(597, 369)
-scale = Vector2(94.815, 80.821)
+position = Vector2(444, 295)
+scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_tqm1i")
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer3/AnimatedSprite2D4"]
@@ -315,6 +375,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.845, 1.845)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer3/ColorRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_e1vvg")
+}
 
 [node name="Jumpscare" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tqm1i")
