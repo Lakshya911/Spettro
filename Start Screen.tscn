@@ -82,7 +82,7 @@ shader_parameter/MainAlpha = 0.39
 shader = ExtResource("8_ye74n")
 shader_parameter/blur_amount = 2.481
 shader_parameter/mix_amount = 0.115
-shader_parameter/color_over = null
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_c1udk")

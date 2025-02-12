@@ -44,6 +44,7 @@ var g40 : float;
 #endregion
 #region Functions
 func _jumpscare() -> void:
+	jmpscr = false
 	_change()
 func _change() -> void:
 	get_tree().change_scene_to_file.bind("res://Ded.tscn").call_deferred()
@@ -197,14 +198,6 @@ func _physics_process(delta):
 			$"Distance Finder".hide()
 			d41 = true
 			$"../Sound/Equip".play()
-			await get_tree().create_timer(2).timeout
-			get_tree().paused = true
-			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",35)
-			_showtext("You can use this to find distance between you and the keys")
-			await get_tree().create_timer(4).timeout
-			_showtext("")
-			$"../CanvasLayer2/Label3".add_theme_font_size_override("font_size",70)
-			get_tree().paused = false
 #endregion
 #region Other Inputs
 	if amtkey > 8:

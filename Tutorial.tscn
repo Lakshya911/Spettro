@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2r8rp11q6f1f"]
+[gd_scene load_steps=23 format=3 uid="uid://b2r8rp11q6f1f"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_5s8la"]
 [ext_resource type="Shader" uid="uid://xroiiln2hydm" path="res://Start Screen.gdshader" id="1_jl26d"]
 [ext_resource type="Script" uid="uid://b3kdemfoppqyb" path="res://tutorial.gd" id="1_oiqhk"]
 [ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="3_fr6qw"]
 [ext_resource type="AudioStream" uid="uid://du3l1ppj8q0ff" path="res://dark-horror-ambience-296781.mp3" id="5_p3v23"]
+[ext_resource type="Texture2D" uid="uid://bwa6y6elrdff1" path="res://Screenshot 2025-02-12 214639.png" id="6_hlpnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fr6qw"]
 atlas = ExtResource("1_5s8la")
@@ -118,6 +119,81 @@ _data = {
 &"new_animation_2": SubResource("Animation_jldhp")
 }
 
+[sub_resource type="Animation" id="Animation_swigd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tyy4w"]
+resource_name = "new_animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.26667, 3, 3.9, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 37.0, 69.0, 83.0, 99.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hp7xp"]
+_data = {
+&"RESET": SubResource("Animation_swigd"),
+&"new_animation": SubResource("Animation_tyy4w")
+}
+
+[sub_resource type="Animation" id="Animation_tpsgm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading"]
+}
+
+[sub_resource type="Animation" id="Animation_hp7xp"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Loading", "Loading.", "Loading.."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_538ju"]
+_data = {
+&"RESET": SubResource("Animation_tpsgm"),
+&"new_animation": SubResource("Animation_hp7xp")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_oiqhk")
 
@@ -174,5 +250,127 @@ zoom = Vector2(1.31, 1.31)
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_p3v23")
+volume_db = 12.0
 autoplay = true
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 6
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -525.0
+offset_top = -105.0
+offset_right = -25.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.1, 2.1)
+tooltip_text = "Loading...."
+theme_override_fonts/font = ExtResource("3_fr6qw")
+rounded = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ProgressBar"]
+libraries = {
+&"": SubResource("AnimationLibrary_hp7xp")
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = 161.0
+offset_right = 267.0
+offset_bottom = 210.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 40
+text = "Loading"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_538ju")
+}
+autoplay = "new_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579, 266)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_hlpnd")
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+z_index = 100
+position = Vector2(51, 44)
+rotation = -0.15708
+scale = Vector2(1, 1.05714)
+polygon = PackedVector2Array(336.354, 113.604, 341, 96, 358.141, 104.418, 350, 108, 361.301, 127.877, 355, 131, 344, 110)
+
+[node name="Polygon2D3" type="Polygon2D" parent="CanvasLayer"]
+z_index = 100
+position = Vector2(371, 126)
+rotation = -0.15708
+scale = Vector2(1, 1.05714)
+polygon = PackedVector2Array(336.354, 113.604, 341, 96, 358.141, 104.418, 350, 108, 361.301, 127.877, 355, 131, 344, 110)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer"]
+z_index = 100
+position = Vector2(825, -264)
+rotation = 1.1781
+scale = Vector2(1, 1.05714)
+polygon = PackedVector2Array(336.354, 113.604, 341, 96, 358.141, 104.418, 350, 108, 356.749, 129.544, 349.675, 130.868, 344, 110)
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 335.0
+offset_top = 135.0
+offset_right = 1914.0
+offset_bottom = 452.0
+scale = Vector2(0.155, 0.155)
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 100
+text = "Here You can see the distance to the shown objects.. "
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 698.0
+offset_top = 222.0
+offset_right = 2085.0
+offset_bottom = 796.0
+scale = Vector2(0.18, 0.18)
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 100
+text = "This is the cursor you can teleport with the help of this by right clicking"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 751.0
+offset_top = 120.0
+offset_right = 2265.0
+offset_bottom = 670.0
+scale = Vector2(0.175, 0.175)
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 100
+text = "Here You can see the amount of teleporter energy.."
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+z_index = 6
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 344.63
+offset_top = 483.0
+offset_right = 810.63
+offset_bottom = 521.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 30
+text = "Press Space to skip.."

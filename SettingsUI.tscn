@@ -10,14 +10,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wpf3"]
 shader = ExtResource("2_bvaaw")
 shader_parameter/blur_amount = 2.48
-shader_parameter/mix_amount = null
+shader_parameter/mix_amount = 0.0
 shader_parameter/color_over = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m8gn"]
 shader = ExtResource("2_bvaaw")
 shader_parameter/blur_amount = 2.48
-shader_parameter/mix_amount = null
-shader_parameter/color_over = null
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn4j0"]
 atlas = ExtResource("2_6uopx")
@@ -442,14 +442,14 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ky1b6"]
 shader = ExtResource("2_bvaaw")
 shader_parameter/blur_amount = 2.48
-shader_parameter/mix_amount = null
-shader_parameter/color_over = null
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nkulh"]
 shader = ExtResource("2_bvaaw")
 shader_parameter/blur_amount = 2.48
-shader_parameter/mix_amount = null
-shader_parameter/color_over = null
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_0dwgl")
