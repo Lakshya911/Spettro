@@ -1075,7 +1075,7 @@ text = "Distance  :100m"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer2"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.0588235)
 z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0

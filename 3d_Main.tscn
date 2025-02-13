@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://dps6jd2woyo3n"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_3i5nh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3i5nh"]
+
+[sub_resource type="Sky" id="Sky_s0b5u"]
+sky_material = SubResource("ProceduralSkyMaterial_3i5nh")
+
+[sub_resource type="Environment" id="Environment_86nu6"]
+background_mode = 2
+background_color = Color(0.606114, 0.331341, 0.293172, 1)
+sky = SubResource("Sky_s0b5u")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_3i5nh"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s0b5u"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_86nu6"]
+seamless = true
+color_ramp = SubResource("Gradient_3i5nh")
+noise = SubResource("FastNoiseLite_s0b5u")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_ufd22"]
+_shader_parameters = {
+&"blend_sharpness": 0.87,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_86nu6"),
+&"vertex_normals_distance": 128.0
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t032q"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 85.0
+distance_fade_max_distance = 75.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_e3nol"]
+material_override = SubResource("StandardMaterial3D_t032q")
+generated_type = 1
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_ihcp3"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_e3nol")])
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.594823, -0.509148, 0.622056, 0, 0.77384, 0.633381, -0.803857, -0.37675, 0.460298, 0, 811.284, 0)
+light_energy = 0.9
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_86nu6")
+
+[node name="ProtoController" parent="." instance=ExtResource("1_3i5nh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8204, 455.78, -1)
+can_sprint = true
+can_freefly = true
+input_left = "a"
+input_right = "d"
+input_forward = "w"
+input_back = "s"
+input_jump = "space"
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+material = SubResource("Terrain3DMaterial_ufd22")
+assets = SubResource("Terrain3DAssets_ihcp3")
+top_level = true
+metadata/_edit_lock_ = true

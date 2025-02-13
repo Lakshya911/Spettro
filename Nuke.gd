@@ -16,17 +16,9 @@ func _process(delta):
 		$"../Sound/Boom".play()
 		$"../CanvasLayer2/ColorRect3/AnimationPlayer".play("KILL")
 		self.queue_free()
-		print("Explosion Woooooo!")
-		$"../Sound/Background Music".stop()
-		$"../Sound/Late Game Background Music".play()
-		$"../Ghost".x1 = 2
-		$"../Ghost".y1 = 5
-		$"../Ghost".o1 = 30
-		$"../Ghost".o2 = 23
-		$"../Node2D2".y = 0.048
-		$"../Timer4".start()
-		$"../Player"._showtext("Survive for 3 minutes")
-		
+		if $"../CanvasLayer2/ColorRect3/AnimationPlayer".animation_finished:
+			await get_tree().create_timer(0.5).timeout
+			get_tree().change_scene_to_file("res://3d_Main.tscn")
 
 func _on_timer_4_timeout():
 	$"../CanvasLayer2/Label2".text = "You Escaped.."
