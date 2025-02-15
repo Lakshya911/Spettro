@@ -1,10 +1,5 @@
-# ProtoController v1.0 by Brackeys
-# CC0 License
-# Intended for rapid prototyping of first-person games.
-# Happy prototyping!
-
 extends CharacterBody3D
-
+@export var o : float = 1.0
 ## Can we move around?
 @export var can_move : bool = true
 ## Are we affected by gravity?
@@ -77,6 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		o = 1.0 * 2.4
+	else:
+		o = 1.0
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -88,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity to velocity
 	if has_gravity:
 		if not is_on_floor():
-			velocity += get_gravity() * delta
+			velocity += get_gravity() * delta * o
 
 	# Apply jumping
 	if can_jump:
