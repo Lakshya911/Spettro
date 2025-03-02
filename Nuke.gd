@@ -18,7 +18,7 @@ func _process(delta):
 		self.queue_free()
 		if $"../CanvasLayer2/ColorRect3/AnimationPlayer".animation_finished:
 			await get_tree().create_timer(0.5).timeout
-			get_tree().change_scene_to_file("res://3d_Main.tscn")
+			get_tree().change_scene_to_file("res://Loading.tscn")
 
 func _on_timer_4_timeout():
 	$"../CanvasLayer2/Label2".text = "You Escaped.."

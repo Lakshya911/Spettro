@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs72ogkvdd7d6"]
+[gd_scene load_steps=18 format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://c1iwbdavddkx6" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="FontFile" uid="uid://omwgymwfsix7" path="res://MegamaxJonathanToo-YqOq2.ttf" id="2_wr06p"]
+[ext_resource type="Shader" uid="uid://csiadjkgff74" path="res://addons/proto_controller/proto_controller.gdshader" id="3_5hfox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0, 0, 0, 1)
@@ -15,6 +17,165 @@ height = 1.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
 radius = 0.4
 height = 1.8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wr06p"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_5hfox"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wr06p"]
+resource_name = "new_animation"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.5, 3.06667, 5.53333, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6dqce"]
+_data = {
+&"RESET": SubResource("Animation_5hfox"),
+&"new_animation": SubResource("Animation_wr06p")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dqce"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dqce"]
+render_priority = 0
+shader = ExtResource("3_5hfox")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/use_texture = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hfox"]
+material = SubResource("ShaderMaterial_6dqce")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hfox"]
+render_priority = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_0rk7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.95695, -2.11271)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, -2.11225)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6dqce"]
+resource_name = "new_animation"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.56667, 2, 2.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.95695, -2.11271), Vector3(0, 5.15695, -2.11271), Vector3(0, 3.87396, -2.11271), Vector3(0, 5.41941, -2.11271), Vector3(0, 3.516, -2.113), Vector3(0, 10.8706, -2.113)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, -2.11225, 0.6, 1, 0, -1.23243, -2.11225, 1.23333, 1, 0, -0.975964, -2.11225, 1.56667, 1, 0, -2.06068, -2.11225, 2, 1, 0, -0.841669, -2.11225, 2.46666, 1, 0, -5.54358, -2.11225)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 2.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h60nn"]
+_data = {
+&"RESET": SubResource("Animation_0rk7u"),
+&"new_animation": SubResource("Animation_6dqce")
+}
 
 [node name="ProtoController" type="CharacterBody3D"]
 script = ExtResource("1_ucva2")
@@ -33,4 +194,92 @@ shape = SubResource("CapsuleShape3D_iof21")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 0.998536, 0.0540962, 0, -0.0540962, 0.998536, 0.0381423, -0.235046, -0.347078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0381423, -0.235046, -0.347078)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="SubViewport"]
+top_level = true
+offset_left = 64.0
+offset_top = 150.0
+offset_right = 326.0
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("2_wr06p")
+theme_override_font_sizes/font_size = 50
+text = "Welcome
+To"
+
+[node name="Label" type="Label" parent="SubViewport/Label"]
+modulate = Color(0.890196, 0.243137, 0, 1)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 52.0
+offset_right = 263.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_wr06p")
+theme_override_font_sizes/font_size = 50
+text = "HELL"
+
+[node name="Label2" type="Label" parent="SubViewport/Label"]
+modulate = Color(0.821911, 2.62313e-06, 7.70092e-07, 1)
+layout_mode = 0
+offset_left = 106.0
+offset_top = 49.0
+offset_right = 259.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("2_wr06p")
+theme_override_font_sizes/font_size = 50
+text = "HELL"
+
+[node name="Label3" type="Label" parent="SubViewport/Label"]
+modulate = Color(0.856067, 0.856067, 0.856067, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 266.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("2_wr06p")
+theme_override_font_sizes/font_size = 50
+text = "Welcome
+To"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.656574, 1.01924, -3.10861)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_wr06p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_6dqce")
+}
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470768, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(8.54461, 0, 0, 0, 4.75795, 0, 0, 0, 0.0782062, 0, 0, -2.11225)
+visible = false
+layers = 4096
+material_override = SubResource("StandardMaterial3D_6dqce")
+gi_mode = 0
+mesh = SubResource("BoxMesh_5hfox")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5hfox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(8.54461, 0, 0, 0, 4.75795, 0, 0, 0, 0.0782062, 0, 3.95695, -2.11271)
+visible = false
+layers = 4096
+material_override = SubResource("StandardMaterial3D_6dqce")
+gi_mode = 0
+mesh = SubResource("BoxMesh_5hfox")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5hfox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_h60nn")
+}

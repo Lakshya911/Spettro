@@ -49,6 +49,8 @@ var freeflying : bool = false
 @onready var collider: CollisionShape3D = $Collider
 
 func _ready() -> void:
+	$Sprite3D/AnimationPlayer.play("new_animation")
+	$Node3D/AnimationPlayer.play("new_animation")
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x

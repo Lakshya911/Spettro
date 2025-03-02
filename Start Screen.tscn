@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dke53oods4r1x"]
+[gd_scene load_steps=20 format=3 uid="uid://dke53oods4r1x"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_y6q1q"]
 [ext_resource type="Texture2D" uid="uid://1pb6wh82cdgx" path="res://light.png" id="2_qvsky"]
@@ -13,12 +13,14 @@
 
 [sub_resource type="GDScript" id="GDScript_c1udk"]
 script/source = "extends Node2D
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-
+	$CanvasLayer/ColorRect3.visible = false
 func _on_label_mouse_entered() -> void:
+	$AudioStreamPlayer2D2.play()
+
+
+func _on_link_button_mouse_entered() -> void:
 	$AudioStreamPlayer2D2.play()
 "
 
@@ -83,6 +85,66 @@ shader = ExtResource("8_ye74n")
 shader_parameter/blur_amount = 2.481
 shader_parameter/mix_amount = 0.115
 shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4ql4d"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tmamk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6qwo"]
+_data = {
+&"RESET": SubResource("Animation_tmamk"),
+&"new_animation": SubResource("Animation_4ql4d")
+}
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_c1udk")
@@ -235,6 +297,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="CanvasLayer"]
+z_index = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -252,7 +315,47 @@ text = "Start
 flat = true
 script = ExtResource("4_sujtd")
 
+[node name="Button3" type="Button" parent="CanvasLayer"]
+modulate = Color(0.817521, 0.817521, 0.817521, 1)
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 147.32
+offset_top = -13.68
+offset_right = 522.32
+offset_bottom = 151.32
+grow_vertical = 2
+scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 100
+text = "Start
+"
+flat = true
+script = ExtResource("4_sujtd")
+
+[node name="Button4" type="Button" parent="CanvasLayer"]
+modulate = Color(0.817521, 0.817521, 0.817521, 1)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 147.32
+offset_top = -13.68
+offset_right = 522.32
+offset_bottom = 151.32
+grow_vertical = 2
+scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 100
+text = "Start
+"
+flat = true
+script = ExtResource("4_sujtd")
+
 [node name="Button2" type="Button" parent="CanvasLayer"]
+z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -270,7 +373,47 @@ text = "Quit
 flat = true
 script = ExtResource("5_o7etc")
 
+[node name="Button5" type="Button" parent="CanvasLayer"]
+modulate = Color(0.815686, 0.815686, 0.815686, 1)
+z_index = -1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 159.0
+offset_top = -249.0
+offset_right = 462.0
+offset_bottom = -84.0
+grow_vertical = 0
+scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 100
+text = "Quit
+"
+flat = true
+script = ExtResource("5_o7etc")
+
+[node name="Button6" type="Button" parent="CanvasLayer"]
+modulate = Color(0.815686, 0.815686, 0.815686, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 159.0
+offset_top = -249.0
+offset_right = 462.0
+offset_bottom = -84.0
+grow_vertical = 0
+scale = Vector2(0.445, 0.445)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 100
+text = "Quit
+"
+flat = true
+script = ExtResource("5_o7etc")
+
 [node name="Label" type="Label" parent="CanvasLayer"]
+z_index = 3
 offset_left = 21.0
 offset_top = 187.65
 offset_right = 1046.0
@@ -284,14 +427,73 @@ theme_override_fonts/font = ExtResource("7_jmc6m")
 theme_override_font_sizes/font_size = 200
 text = "Spettro"
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+z_index = -1
+offset_left = 27.0
+offset_top = 193.65
+offset_right = 1052.0
+offset_bottom = 513.65
+scale = Vector2(0.43, 0.43)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 200
+text = "Spettro"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+z_index = 1
+offset_left = 25.0
+offset_top = 191.65
+offset_right = 1050.0
+offset_bottom = 511.65
+scale = Vector2(0.43, 0.43)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_jmc6m")
+theme_override_font_sizes/font_size = 200
+text = "Spettro"
+
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
+z_index = 2
 offset_left = 13.0
 offset_top = 165.0
 offset_right = 475.0
 offset_bottom = 292.0
 uri = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 100
+z_as_relative = false
+offset_left = -517.0
+offset_top = -434.0
+offset_right = 1490.0
+offset_bottom = 936.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_j6qwo")
+}
+
 [connection signal="mouse_entered" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Button4" to="CanvasLayer/Button4" method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Button5" to="CanvasLayer/Button5" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Button6" to="CanvasLayer/Button6" method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/Label" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Label2" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Label3" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/LinkButton" to="." method="_on_link_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/LinkButton" to="." method="_on_link_button_pressed"]

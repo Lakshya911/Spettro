@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2r8rp11q6f1f"]
+[gd_scene load_steps=26 format=3 uid="uid://b2r8rp11q6f1f"]
 
 [ext_resource type="Texture2D" uid="uid://61vja2hoix16" path="res://Happy Horrorday Tileset.png" id="1_5s8la"]
 [ext_resource type="Shader" uid="uid://xroiiln2hydm" path="res://Start Screen.gdshader" id="1_jl26d"]
@@ -194,6 +194,42 @@ _data = {
 &"new_animation": SubResource("Animation_hp7xp")
 }
 
+[sub_resource type="Animation" id="Animation_538ju"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_su8sl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6r586"]
+_data = {
+&"RESET": SubResource("Animation_su8sl"),
+&"new_animation": SubResource("Animation_538ju")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_oiqhk")
 
@@ -234,12 +270,37 @@ offset_bottom = 160.44
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_fr6qw")
 theme_override_font_sizes/font_size = 32
-text = "YOOOOOOOOOOOOOoo"
+text = "I have been trying to run away from spettro for quite some time now"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_tyy4w")
+}
+
+[node name="Label3" type="Label" parent="."]
+modulate = Color(0.533037, 0.533037, 0.533037, 1)
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 4
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 148.125
+offset_top = -149.56
+offset_right = 1005.79
+offset_bottom = 161.81
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 32
+text = "I have been trying to run away from spettro for quite some time now"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label3"]
 libraries = {
 &"": SubResource("AnimationLibrary_tyy4w")
 }
@@ -374,3 +435,38 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_fr6qw")
 theme_override_font_sizes/font_size = 30
 text = "Press Space to skip.."
+
+[node name="Label3" type="Label" parent="Label2"]
+modulate = Color(0.533333, 0.533333, 0.533333, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -35.0
+offset_right = 234.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_fr6qw")
+theme_override_font_sizes/font_size = 30
+text = "Press Space to skip.."
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+z_index = 100
+z_as_relative = false
+offset_left = -517.0
+offset_top = -434.0
+offset_right = 1490.0
+offset_bottom = 936.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_6r586")
+}

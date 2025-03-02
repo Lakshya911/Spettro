@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://dps6jd2woyo3n"]
+[gd_scene load_steps=26 format=4 uid="uid://dps6jd2woyo3n"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_3i5nh"]
+[ext_resource type="Script" uid="uid://caarpsea3benn" path="res://3d_main.gd" id="1_ksqc5"]
 [ext_resource type="Script" uid="uid://3fci7l2gqis2" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ufd22"]
 [ext_resource type="Resource" uid="uid://kkq68g40v24u" path="res://data/data.hterrain" id="3_t032q"]
 [ext_resource type="Script" uid="uid://dstl3vdmhuxsj" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_e3nol"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="14_71hsy"]
 [ext_resource type="Script" uid="uid://2hgofvccxivt" path="res://addons/simplegrasstextured/grass.gd" id="15_ksqc5"]
 [ext_resource type="PackedScene" uid="uid://b1ifm0554gtdb" path="res://addons/boujie_water_shader/prefabs/outset_ocean.tscn" id="16_71hsy"]
+[ext_resource type="AudioStream" uid="uid://ctuop3lbi08u6" path="res://heavy-dark-sound-7545.mp3" id="18_hqge6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3i5nh"]
 sky_top_color = Color(0.486275, 0, 0, 1)
@@ -36,6 +38,15 @@ tonemap_white = 16.0
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.5
+fog_sun_scatter = 0.15
+fog_density = 1.0
+fog_aerial_perspective = 0.045
+fog_height = 17.5
+fog_height_density = 0.195
 volumetric_fog_density = 0.051
 volumetric_fog_length = 117.5
 
@@ -92,6 +103,7 @@ transform_format = 1
 mesh = SubResource("ArrayMesh_a2jwd")
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ksqc5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.594823, -0.509148, 0.622056, 0, 0.77384, 0.633381, -0.803857, -0.37675, 0.460298, 0, 811.284, 0)
@@ -102,9 +114,10 @@ shadow_enabled = true
 environment = SubResource("Environment_86nu6")
 
 [node name="ProtoController" parent="." instance=ExtResource("1_3i5nh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1127.01, 455.78, 1840.87)
-can_sprint = true
-can_freefly = true
+transform = Transform3D(-0.997127, 0, -0.0757444, 0, 1, 0, 0.0757444, 0, -0.997127, 1127.01, 29.9006, 1840.87)
+can_move = false
+has_gravity = false
+can_jump = false
 base_speed = 8.0
 sprint_speed = 14.0
 input_left = "a"
@@ -152,3 +165,15 @@ metadata/SimpleGrassTextured = "2.0.5"
 [node name="OutsetOcean" parent="." instance=ExtResource("16_71hsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -179.946, -133.168, 652.331)
 far_edge = 4000
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1127.13, 31.5789, 1838.98)
+stream = ExtResource("18_hqge6")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
