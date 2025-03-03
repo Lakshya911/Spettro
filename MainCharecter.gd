@@ -82,6 +82,21 @@ func setfalse():
 	r8 = false
 #endregion
 #region Other Functions
+func calculate_pitch_from_distance(distance: float, max_distance: float = 100.0) -> float:
+	# Clamp the distance to avoid division by zero or negative values
+	distance = clamp(distance, 0.1, max_distance)
+	# Normalize the distance: we invert it so closer = higher pitch# This gives us a value between 0 and 1 where 1 = closest, 0 = farthest
+	var normalized_distance = 1.0 - (distance / max_distance)
+# Scale to our pitch range (0.1 to 12)
+# We use the minimum pitch of 0.1 as our base
+	var min_pitch = 0.1
+	var max_pitch = 5.0
+	var pitch_range = max_pitch - min_pitch
+	# Calculate the final pitch value
+	var pitch = min_pitch + (normalized_distance * pitch_range)
+	# Make sure we're within our bounds (just to be safe)
+	pitch = clamp(pitch, min_pitch, max_pitch)
+	return pitch
 func _ready():
 	$"../CanvasLayer2/AnimatedSprite2D".hide()
 	$"../AnimatedSprite2D9/AnimationPlayer".play("RESET")
@@ -100,7 +115,8 @@ func _ready():
 	_showtext("Pick up the device using E")  #Replace E with control when control system is working
 	setfalse()
 func _process(delta):
-	$"../Sound/Heartbeat".pitch_scale = clamp(10.0 - 4.0 * abs(x5 - 5.0), 1, 20.0)
+	var newpitch = calculate_pitch_from_distance(x5)
+	$"../Sound/Heartbeat".pitch_scale = newpitch
 	if $"../Ghost".visible == true:
 		$"../Sound/Heartbeat".stream_paused = false
 	else:
@@ -146,42 +162,42 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("equip"):
 		Speed = 20
 		if d1 < 6 and $"../AnimatedSprite2D".is_inside_tree() == true:
-			$"../AnimatedSprite2D".queue_free()
+			$"../AnimatedSprite2D".global_position = Vector2(-350,1000)
 			_showtext("Key Equipped")
 			_equip(1)
 			node1 = false
 		if d2 < 6 and $"../AnimatedSprite2D2".is_inside_tree() == true:
-			$"../AnimatedSprite2D2".queue_free()
+			$"../AnimatedSprite2D2".global_position = Vector2(-350,1000)
 			_showtext("Key Equipped")
 			_equip(1)
 			node2 = false
 		if d3 < 6 and $"../AnimatedSprite2D3".is_inside_tree() == true:
-			$"../AnimatedSprite2D3".queue_free()
+			$"../AnimatedSprite2D3".global_position = Vector2(-350,1000)
 			_showtext("Key Equipped")
 			_equip(1)
 			node3 = false
 		if n1 < 6 and $"../AnimatedSprite2D4".is_inside_tree() == true:
-			$"../AnimatedSprite2D4".queue_free()
+			$"../AnimatedSprite2D4".global_position = Vector2(-350,1000)
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node4 = false
 		if n2 < 6 and $"../AnimatedSprite2D5".is_inside_tree() == true:
-			$"../AnimatedSprite2D5".queue_free()
+			$"../AnimatedSprite2D5".global_position = Vector2(-350,1000)
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node5 = false
 		if n3 < 6 and $"../AnimatedSprite2D6".is_inside_tree() == true:
-			$"../AnimatedSprite2D6".queue_free()
+			$"../AnimatedSprite2D6".global_position = Vector2(-350,1000)
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node6 = false
 		if n4 < 6 and $"../AnimatedSprite2D7".is_inside_tree() == true:
-			$"../AnimatedSprite2D7".queue_free()
+			$"../AnimatedSprite2D7".global_position = Vector2(-350,1000)
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node7 = false
 		if n5 < 6 and $"../AnimatedSprite2D8".is_inside_tree() == true:
-			$"../AnimatedSprite2D8".queue_free()
+			$"../AnimatedSprite2D8".global_position = Vector2(-350,1000)
 			_showtext("Equipped Nuke Part")
 			_equip(1)
 			node8 = false
@@ -269,6 +285,7 @@ func _physics_process(delta):
 			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
 		else:
 			$"../CanvasLayer2/Label4".text = "Error 404!"
+			$"../CanvasLayer2/AnimatedSprite2D".hide()
 #endregion
 #region Doors
 func _on_area_2d_body_entered(body: Node2D) -> void:

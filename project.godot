@@ -15,6 +15,7 @@ config/version="1.6"
 config/tags=PackedStringArray("main")
 run/main_scene="res://Start Screen.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
@@ -160,6 +161,7 @@ lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=5
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=5
 global_illumination/voxel_gi/quality=1
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 
 [shader_globals]
 

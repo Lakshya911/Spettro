@@ -4,9 +4,13 @@ func _ready() -> void:
 	m = load("res://Tutorial.tscn")
 func _process(delta):
 	if $".".button_pressed == true:
+		$"../ColorRect3/AnimationPlayer".play("new_animation")
 		$"../../AudioStreamPlayer2D".play()
-		await get_tree().create_timer(1.2).timeout
-		get_tree().change_scene_to_packed(m)
+		await get_tree().create_timer(1.1).timeout
+		if m:
+			get_tree().change_scene_to_packed(m)
+		else:
+			pass
 
 
 func _on_mouse_entered() -> void: 

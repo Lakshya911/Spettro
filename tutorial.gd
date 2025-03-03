@@ -4,8 +4,7 @@ var x : int;
 var y : float = 0.0
 var skip : bool = false
 var os = "res://Main.tscn"
-var prg = []
-var ak;
+var osl;
 func dostuff(txt : String , x : int) -> void:
 	$Label/AnimationPlayer.play("new_animation")
 	$Label3/AnimationPlayer.play("new_animation")
@@ -32,6 +31,7 @@ func dodostuff() -> void:
 	await get_tree().create_timer(4).timeout
 	dostuff("Good Luck...You will need it",3)
 func _ready() -> void:
+	osl = load(os)
 	$ColorRect3/AnimationPlayer.play("new_animation")
 	if skip == false:
 		dodostuff()
@@ -41,8 +41,8 @@ func _ready() -> void:
 		$CanvasLayer/Label/AnimationPlayer.play("new_animation")
 		if $CanvasLayer/ProgressBar/AnimationPlayer.animation_finished:
 			await get_tree().create_timer(6).timeout
-			get_tree().change_scene_to_file("res://Main.tscn")
-	ResourceLoader.load_threaded_request(os,prg)
+			if osl:
+				get_tree().change_scene_to_packed(osl)
 func _process(delta: float) -> void:
 	if Input.is_key_label_pressed(KEY_SPACE) and skip == false:
 		skip = true
@@ -53,7 +53,6 @@ func _process(delta: float) -> void:
 		$CanvasLayer.visible = true
 		$CanvasLayer/ProgressBar/AnimationPlayer.play("new_animation")
 		$CanvasLayer/Label/AnimationPlayer.play("new_animation")
-		if $CanvasLayer/ProgressBar/AnimationPlayer.animation_finished and ResourceLoader.THREAD_LOAD_LOADED:
-			ak = ResourceLoader.load_threaded_get(os)
+		if $CanvasLayer/ProgressBar/AnimationPlayer.animation_finished:
 			await get_tree().create_timer(6).timeout
-			get_tree().change_scene_to_packed(ak)
+			get_tree().change_scene_to_packed(osl)
