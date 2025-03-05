@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Spettro"
-config/version="1.6"
+config/version="MVP 1.2"
 config/tags=PackedStringArray("main")
 run/main_scene="res://Start Screen.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0443307, 0.068657, 0.0836155, 1)
+boot_splash/image="uid://dviiaq8iwxqqs"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="uid://dyd2nr17eyi0p"
 
 [audio]
 
