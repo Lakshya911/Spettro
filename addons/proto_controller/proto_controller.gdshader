@@ -9,16 +9,16 @@ uniform bool use_texture = false;
 void fragment() {
     // Set the base color
     vec4 color = albedo;
-    
+
     // Apply texture if enabled
     if (use_texture) {
         color *= texture(texture_albedo, UV);
     }
-    
+
     // Apply the color
     ALBEDO = color.rgb;
     ALPHA = color.a;
-    
+
     // Disable fog effect on this material
     FOG = vec4(0.0);
 }

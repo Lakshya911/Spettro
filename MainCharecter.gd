@@ -23,6 +23,7 @@ var node5 : bool = true
 var node6 : bool = true
 var node7 : bool = true
 var node8 : bool = true
+var nod : bool = false
 var km : float;
 var x1 : Vector2;
 var y2 : Vector2;
@@ -144,8 +145,8 @@ func _physics_process(delta):
 	move_and_slide()                   #Movement
 #endregion
 #region Jumpscare
-	if x5 < 4 or Input.is_key_label_pressed(KEY_I):    #Distance b/w ghost and player is less then change scene
-		if $"../Ghost".visible == true or Input.is_key_label_pressed(KEY_I):
+	if x5 < 4:    #Distance b/w ghost and player is less then change scene
+		if $"../Ghost".visible == true:
 			_jumpscare()
 #endregion
 #region Debug
@@ -283,7 +284,7 @@ func _physics_process(delta):
 			$"../CanvasLayer2/AnimatedSprite2D".set_animation("Nuke parts")
 			$"../CanvasLayer2/AnimatedSprite2D".set_frame(4)
 			$"../CanvasLayer2/AnimatedSprite2D".scale = Vector2(5.465,5.465)
-		else:
+		if nod == true:
 			$"../CanvasLayer2/Label4".text = "Error 404!"
 			$"../CanvasLayer2/AnimatedSprite2D".hide()
 #endregion
